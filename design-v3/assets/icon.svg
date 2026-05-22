@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="PixConvert icon">
+  <g fill="none" stroke="#065f46" stroke-width="88" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="192" y="192" width="640" height="640" rx="96"/>
+    <path d="M372 364h280l-76-76"/>
+    <path d="M652 364l-76 76"/>
+    <path d="M652 660H372l76 76"/>
+    <path d="M372 660l76-76"/>
+  </g>
+</svg>

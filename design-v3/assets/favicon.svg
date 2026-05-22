@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><metadata><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/"><rdf:Description><dc:creator>RealFaviconGenerator</dc:creator><dc:source>https://realfavicongenerator.net</dc:source></rdf:Description></rdf:RDF></metadata><style>
+    #light-icon {
+      display: inline;
+    }
+    #dark-icon {
+      display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #light-icon {
+        display: none;
+      }
+      #dark-icon {
+        display: inline;
+      }
+    }
+  </style><g id="light-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g clip-path="url(#SvgjsClipPath1164)"><rect width="1000" height="1000" fill="#ffffff"></rect><g transform="matrix(0.87890625,0,0,0.87890625,50,50)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="PixConvert icon" width="1024" height="1024"><g fill="none" stroke="#065f46" stroke-width="88" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="192" y="192" width="640" height="640" rx="96"></rect>
+    <path d="M372 364h280l-76-76"></path>
+    <path d="M652 364l-76 76"></path>
+    <path d="M652 660H372l76 76"></path>
+    <path d="M372 660l76-76"></path>
+  </g></svg></g></g><defs><clipPath id="SvgjsClipPath1164"><rect width="1000" height="1000" x="0" y="0" rx="400" ry="400"></rect></clipPath></defs></svg></g><g id="dark-icon"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="1000"><g><g transform="matrix(0.9765625,0,0,0.9765625,0,0)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="PixConvert icon" width="1024" height="1024"><g fill="none" stroke="#065f46" stroke-width="88" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="192" y="192" width="640" height="640" rx="96"></rect>
+    <path d="M372 364h280l-76-76"></path>
+    <path d="M652 364l-76 76"></path>
+    <path d="M652 660H372l76 76"></path>
+    <path d="M372 660l76-76"></path>
+  </g></svg></g></g></svg></g></svg>

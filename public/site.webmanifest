@@ -1,0 +1,21 @@
+{
+  "name": "PixConvert — Local Image Converter",
+  "short_name": "PixConvert",
+  "description": "Convert images instantly in your browser. No upload needed — 100% private, free, and fast.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAFAF8",
+  "theme_color": "#065F46",
+  "icons": [
+    {
+      "src": "/favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

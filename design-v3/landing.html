@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- OG Image -->
+<meta property="og:title" content="PixConvert — Local Image Converter">
+<meta property="og:description" content="Lightning-fast, secure image conversion powered by local WebAssembly. Your files never leave your device.">
+<meta property="og:image" content="https://pixconvert.org/og-image.png">
+<meta property="og:type" content="website">
+<title>PixConvert - Local Image Converter</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1c1b1b",
+                        "on-secondary-fixed": "#002115",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#6f7973",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#065f46",
+                        "tertiary-fixed": "#ffdad6",
+                        "inverse-surface": "#313030",
+                        "surface-container-low": "#f6f3f2",
+                        "outline-variant": "#bec9c2",
+                        "surface-container-highest": "#e5e2e1",
+                        "tertiary-container": "#823f3a",
+                        "on-surface": "#1c1b1b",
+                        "surface-tint": "#1b6b51",
+                        "surface-container-high": "#eae7e7",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#73332f",
+                        "on-primary-fixed-variant": "#00513b",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#a8cfbc",
+                        "on-secondary": "#ffffff",
+                        "background": "#FAFAF8",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "surface-container": "#f0eded",
+                        "surface": "#FAFAF8",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#652925",
+                        "secondary": "#416656",
+                        "on-tertiary-container": "#ffb4ad",
+                        "error": "#ba1a1a",
+                        "primary-container": "#065f46",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-container": "#8bd6b7",
+                        "primary-fixed": "#a6f2d1",
+                        "on-secondary-fixed-variant": "#294e3f",
+                        "secondary-fixed": "#c3ecd7",
+                        "inverse-primary": "#8bd6b6",
+                        "primary-fixed-dim": "#8bd6b6",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#476c5b",
+                        "on-primary-fixed": "#002116",
+                        "secondary-container": "#c3ecd7",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#3b0908",
+                        "on-surface-variant": "#3f4944"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.375rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "tool": "0.75rem",
+                        "btn": "0.375rem",
+                        "card": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "lg": "48px",
+                        "sm": "16px",
+                        "container-max": "1120px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-lg": ["DM Sans"],
+                        "body-md": ["DM Sans"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.4", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 200,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        body {
+            background-color: #FAFAF8;
+        }
+        .flat-border {
+            border: 1px solid #E5E7EB;
+        }
+        .tool-border {
+            border: 2px dashed #065F46;
+        }
+    </style>
+</head>
+<body class="text-on-background bg-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-background dark:bg-on-background sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">PixConvert</div>
+<div class="hidden md:flex space-x-md items-center">
+<a class="font-headline-md text-headline-md font-body-md text-body-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#tools">Tools</a>
+<a class="font-headline-md text-headline-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#faq">FAQ</a>
+<a class="font-headline-md text-headline-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#privacy">Privacy</a>
+<a class="font-headline-md text-headline-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors duration-200 scale-95 active:scale-90 transition-transform" href="#terms">Terms</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="min-h-[614px] flex flex-col items-center justify-center pt-xl pb-lg px-gutter max-w-container-max mx-auto text-center">
+<h1 class="font-display-lg text-display-lg text-on-background mb-md max-w-3xl">Convert Images Instantly. No Upload Needed.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl">Lightning-fast, secure image conversion powered by local WebAssembly. Your files never leave your device.</p>
+<!-- Dropzone Card -->
+<div class="bg-surface-container-lowest flat-border rounded-tool w-full max-w-[800px] p-sm mb-lg shadow-sm">
+<div class="tool-border rounded-lg bg-surface flex flex-col items-center justify-center py-xl px-md cursor-pointer hover:bg-surface-container-low transition-colors duration-200">
+<span class="material-symbols-outlined text-primary-container text-[48px] mb-sm" style="font-variation-settings: 'FILL' 0, 'wght' 200;">cloud_upload</span>
+<p class="font-headline-md text-headline-md text-on-background mb-base">Drag &amp; Drop images here</p>
+<p class="font-body-md text-body-md text-on-surface-variant">or click to browse from your computer</p>
+</div>
+</div>
+<!-- Format Pills -->
+<div class="flex flex-wrap justify-center gap-sm mb-lg">
+<span class="px-sm py-base rounded-full flat-border font-label-md text-label-md text-on-background bg-surface-container-lowest">JPG</span>
+<span class="px-sm py-base rounded-full border-2 border-primary-container bg-primary-container text-on-primary font-label-md text-label-md">PNG</span>
+<span class="px-sm py-base rounded-full flat-border font-label-md text-label-md text-on-background bg-surface-container-lowest">WebP</span>
+<span class="px-sm py-base rounded-full flat-border font-label-md text-label-md text-on-background bg-surface-container-lowest">AVIF</span>
+</div>
+</section>
+<!-- Trust Bar -->
+<section class="py-lg px-gutter max-w-container-max mx-auto border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-xs" style="font-variation-settings: 'FILL' 0, 'wght' 200;">lock</span>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">100% Private</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Zero server uploads. Processed locally.</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-xs" style="font-variation-settings: 'FILL' 0, 'wght' 200;">bolt</span>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">Lightning Fast</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">WASM powered for native-like speeds.</p>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-container text-[32px] mb-xs" style="font-variation-settings: 'FILL' 0, 'wght' 200;">task_alt</span>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">Completely Free</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">No hidden fees, no subscriptions.</p>
+</div>
+</div>
+<div class="text-center mt-xl">
+<button class="bg-primary-container text-on-primary hover:bg-primary transition-colors duration-200 font-label-md text-label-md px-lg py-sm rounded-btn shadow-md text-lg">Convert Your First Image — It's Free</button>
+</div>
+</section>
+<!-- Supported Formats -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl">Supported Formats</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">JPG</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">PNG</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">WebP</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">AVIF</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">BMP</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">GIF</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">TIFF</span>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md flex flex-col items-center shadow-sm">
+<span class="font-headline-md text-primary-container mb-xs font-bold">HEIC</span>
+</div>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant text-center">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl">How It Works</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="flex flex-col items-center">
+<div class="bg-surface-container-lowest flat-border rounded-full w-16 h-16 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[32px]">upload_file</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">1. Drop Images</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Drag and drop your files into the browser.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="bg-surface-container-lowest flat-border rounded-full w-16 h-16 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[32px]">settings</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">2. Pick Format</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Select your desired output format.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="bg-surface-container-lowest flat-border rounded-full w-16 h-16 flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[32px]">download</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">3. Download</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Get your converted files instantly.</p>
+</div>
+</div>
+</section>
+<!-- Why Local? -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl text-center">Why Local Processing?</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-xl max-w-4xl mx-auto">
+<div class="bg-surface-container-low p-lg rounded-card flat-border opacity-70">
+<h3 class="font-headline-md text-headline-md text-on-surface-variant mb-md text-center">Server Upload Flow</h3>
+<ul class="space-y-md">
+<li class="flex items-center text-on-surface-variant font-body-md"><span class="material-symbols-outlined mr-sm text-outline">close</span> Upload files to a remote server</li>
+<li class="flex items-center text-on-surface-variant font-body-md"><span class="material-symbols-outlined mr-sm text-outline">close</span> Wait in a processing queue</li>
+<li class="flex items-center text-on-surface-variant font-body-md"><span class="material-symbols-outlined mr-sm text-outline">close</span> Files stored on third-party servers</li>
+<li class="flex items-center text-on-surface-variant font-body-md"><span class="material-symbols-outlined mr-sm text-outline">close</span> Download converted files</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-card tool-border shadow-sm">
+<h3 class="font-headline-md text-headline-md text-primary-container mb-md text-center">Local WASM Flow</h3>
+<ul class="space-y-md">
+<li class="flex items-center text-on-background font-body-md"><span class="material-symbols-outlined mr-sm text-primary-container">check</span> Files stay on your device</li>
+<li class="flex items-center text-on-background font-body-md"><span class="material-symbols-outlined mr-sm text-primary-container">check</span> Instant processing using your CPU</li>
+<li class="flex items-center text-on-background font-body-md"><span class="material-symbols-outlined mr-sm text-primary-container">check</span> Absolute privacy guaranteed</li>
+<li class="flex items-center text-on-background font-body-md"><span class="material-symbols-outlined mr-sm text-primary-container">check</span> Immediate save to disk</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Use Cases -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl text-center">Perfect For</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest flat-border rounded-card p-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-background mb-xs">Web Developers</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Batch convert assets to Next-Gen formats like WebP and AVIF for faster load times.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-background mb-xs">Office Users</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Quickly change HEIC photos from your phone into universal JPGs for presentations.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-card p-md shadow-sm">
+<h3 class="font-headline-md text-headline-md text-on-background mb-xs">Designers</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Convert high-res TIFFs to lighter formats without waiting for heavy software to load.</p>
+</div>
+</div>
+</section>
+<!-- Features -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl text-center">Everything You Need</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg max-w-4xl mx-auto">
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary-container text-[32px] mr-md mt-1">laptop_mac</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">Browser-Based</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">No installation required. Works entirely in your modern web browser.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary-container text-[32px] mr-md mt-1">style</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">Batch Processing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Convert hundreds of images at once without breaking a sweat.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary-container text-[32px] mr-md mt-1">category</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">7+ Formats</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Support for all major image formats, including modern web standards.</p>
+</div>
+</div>
+<div class="flex items-start">
+<span class="material-symbols-outlined text-primary-container text-[32px] mr-md mt-1">person_off</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-base">No Signup</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Jump straight into converting. We don't want your email.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-xl px-gutter max-w-container-max mx-auto border-t border-outline-variant" id="faq">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-xl text-center">Frequently Asked Questions</h2>
+<div class="max-w-3xl mx-auto space-y-sm">
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Are my files really private?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Is there a file size limit?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">The only limit is your device's available memory. You can process very large images if your computer has the RAM for it.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Which browsers are supported?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Any modern browser that supports WebAssembly, including recent versions of Chrome, Firefox, Safari, and Edge.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Is it completely free?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Can I use this offline?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Once the page is loaded, yes. You don't need an active internet connection to convert files since everything runs locally.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Do you compress the images?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We use standard encoding defaults for each format to ensure high quality while reducing file size where possible.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Can I convert multiple files at once?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Yes, you can drag and drop multiple files to batch convert them simultaneously.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">Does it work on mobile?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Yes, mobile browsers support WebAssembly. However, performance will depend on your device's processing power.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">What is WebAssembly?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">WebAssembly (WASM) allows code written in languages like C++ or Rust to run inside web browsers at near-native speeds.</p>
+</div>
+<div class="bg-surface-container-lowest flat-border rounded-lg p-md">
+<h3 class="font-headline-md text-[20px] text-on-background mb-xs">How do I contact support?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">As a free, local-only tool, we don't offer direct support, but you can report bugs on our GitHub repository.</p>
+</div>
+</div>
+</section>
+<!-- Footer CTA -->
+<section class="py-xl px-gutter max-w-container-max mx-auto text-center flex flex-col items-center border-t border-outline-variant">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-md">Ready to optimize your workflow?</h2>
+<button class="bg-primary-container text-on-primary hover:bg-primary transition-colors duration-200 font-label-md text-label-md px-lg py-sm rounded-btn shadow-md text-lg">Convert Your First Image — It's Free</button>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-on-background w-full py-xl border-t border-outline-variant dark:border-outline flat no shadows mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md px-gutter max-w-container-max mx-auto">
+<div>
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed mb-sm">PixConvert</div>
+<p class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant">© 2024 PixConvert. All processing happens locally in your browser.</p>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-background mb-sm">Product</h4>
+<ul class="space-y-xs">
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#terms">Terms of Service</a></li>
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#privacy">Privacy Policy</a></li>
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#formats">Format Guide</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-on-background mb-sm">Connect</h4>
+<ul class="space-y-xs">
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#">GitHub</a></li>
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#">Twitter</a></li>
+<li><a class="font-label-md text-label-md font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline opacity-80 hover:opacity-100 transition-opacity" href="#">Blog</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>
