@@ -1,26 +1,75 @@
+import { LogoFull } from "@/components/ui/Logo";
+
 export function Footer() {
   return (
     <footer className="bg-surface-container-low border-t border-outline-variant mt-auto w-full py-12">
       <div className="mx-auto max-w-[1120px] px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
-          <div className="font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-primary mb-3">
-            PixConvert
-          </div>
+          <LogoFull className="mb-3" />
           <p className="text-sm text-on-surface-variant leading-relaxed">
-            © 2024 PixConvert. All processing happens locally in your browser. Your files never leave your device.
+            © 2026 PixConvert. All processing happens locally in your browser. Your files never leave your device.
           </p>
         </div>
 
-        {/* Product */}
+        {/* Popular Converters */}
         <div>
           <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
-            Product
+            Popular Converters
           </h4>
           <ul className="space-y-2">
             <li>
-              <a href="/terms-of-service" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                Terms of Service
+              <a href="/jpg-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                JPG to PNG
+              </a>
+            </li>
+            <li>
+              <a href="/png-to-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                PNG to WebP
+              </a>
+            </li>
+            <li>
+              <a href="/heic-to-jpg" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                HEIC to JPG
+              </a>
+            </li>
+            <li>
+              <a href="/jpg-to-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                JPG to WebP
+              </a>
+            </li>
+            <li>
+              <a href="/webp-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                WebP to PNG
+              </a>
+            </li>
+            <li>
+              <a href="/png-to-jpg" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                PNG to JPG
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Resources */}
+        <div>
+          <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
+            Resources
+          </h4>
+          <ul className="space-y-2">
+            <li>
+              <a href="/batch-image-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                Batch Converter
+              </a>
+            </li>
+            <li>
+              <a href="/what-is-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                What is WebP?
+              </a>
+            </li>
+            <li>
+              <a href="/webp-vs-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                WebP vs PNG
               </a>
             </li>
             <li>
@@ -29,32 +78,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="/#tools" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                Format Guide
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Tools */}
-        <div>
-          <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
-            Tools
-          </h4>
-          <ul className="space-y-2">
-            <li>
-              <a href="/#tools" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                JPG to PNG
-              </a>
-            </li>
-            <li>
-              <a href="/#tools" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                PNG to WebP
-              </a>
-            </li>
-            <li>
-              <a href="/#tools" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                HEIC to JPG
+              <a href="/terms-of-service" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                Terms of Service
               </a>
             </li>
           </ul>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { UploadCloud, Download, Package, Trash2, Settings } from "lucide-react";
+import { UploadCloud, Package, Trash2, Settings, ArrowRight } from "lucide-react";
 import { FileListItem } from "@/components/ui/FileListItem";
 import {
   createZip,
@@ -10,17 +10,68 @@ import {
   type ConversionResult,
 } from "@/lib/imageConverter";
 
-const FORMATS: OutputFormat[] = ["jpg", "png", "webp", "avif", "bmp", "gif"];
+const ALL_FORMATS: OutputFormat[] = ["jpg", "png", "webp", "avif", "bmp", "gif"];
 
-export function HeroSection() {
+// Map input format to accepted MIME types and extensions
+const INPUT_ACCEPT_MAP: Record<string, string> = {
+  jpg: ".jpg,.jpeg,.jpe,.jfif",
+  png: ".png",
+  webp: ".webp",
+  avif: ".avif",
+  bmp: ".bmp",
+  gif: ".gif",
+  tiff: ".tiff,.tif",
+  heic: ".heic,.heif",
+};
+
+function getInputAccept(inputFormat: string): string {
+  return INPUT_ACCEPT_MAP[inputFormat.toLowerCase()] || "image/*";
+}
+
+function filterFilesByInputFormat(files: File[], inputFormat: string): File[] {
+  const extMap: Record<string, string[]> = {
+    jpg: [".jpg", ".jpeg", ".jpe", ".jfif"],
+    png: [".png"],
+    webp: [".webp"],
+    avif: [".avif"],
+    bmp: [".bmp"],
+    gif: [".gif"],
+    tiff: [".tiff", ".tif"],
+    heic: [".heic", ".heif"],
+  };
+  const exts = extMap[inputFormat.toLowerCase()];
+  if (!exts) return files;
+  return files.filter((f) =>
+    exts.some((ext) => f.name.toLowerCase().endsWith(ext))
+  );
+}
+
+interface FormatHeroSectionProps {
+  title: string;
+  subtitle: string;
+  inputFormat: string;
+  outputFormat: OutputFormat;
+  description?: string;
+}
+
+export function FormatHeroSection({
+  title,
+  subtitle,
+  inputFormat,
+  outputFormat,
+  description,
+}: FormatHeroSectionProps) {
   const [files, setFiles] = useState<File[]>([]);
-  const [defaultFormat, setDefaultFormat] = useState<OutputFormat>("png");
+  const [defaultFormat, setDefaultFormat] = useState<OutputFormat>(outputFormat);
   const [quality, setQuality] = useState(85);
   const [isDragging, setIsDragging] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [results, setResults] = useState<Record<string, ConversionResult>>({});
   const [zipLoading, setZipLoading] = useState(false);
+  const [rejectedFiles, setRejectedFiles] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const acceptTypes = getInputAccept(inputFormat);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -32,23 +83,38 @@ export function HeroSection() {
     setIsDragging(false);
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setIsDragging(false);
-    const droppedFiles = Array.from(e.dataTransfer.files).filter((f) =>
-      f.type.startsWith("image/")
-    );
-    setFiles((prev) => [...prev, ...droppedFiles]);
-  }, []);
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragging(false);
+      setRejectedFiles([]);
+      const allDropped = Array.from(e.dataTransfer.files).filter((f) =>
+        f.type.startsWith("image/")
+      );
+      const valid = filterFilesByInputFormat(allDropped, inputFormat);
+      const rejected = allDropped
+        .filter((f) => !valid.includes(f))
+        .map((f) => f.name);
+      if (rejected.length > 0) setRejectedFiles(rejected);
+      setFiles((prev) => [...prev, ...valid]);
+    },
+    [inputFormat]
+  );
 
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const selected = Array.from(e.target.files || []).filter((f) =>
+      setRejectedFiles([]);
+      const allSelected = Array.from(e.target.files || []).filter((f) =>
         f.type.startsWith("image/")
       );
-      setFiles((prev) => [...prev, ...selected]);
+      const valid = filterFilesByInputFormat(allSelected, inputFormat);
+      const rejected = allSelected
+        .filter((f) => !valid.includes(f))
+        .map((f) => f.name);
+      if (rejected.length > 0) setRejectedFiles(rejected);
+      setFiles((prev) => [...prev, ...valid]);
     },
-    []
+    [inputFormat]
   );
 
   const removeFile = useCallback((index: number) => {
@@ -63,6 +129,7 @@ export function HeroSection() {
   const clearAll = useCallback(() => {
     setFiles([]);
     setResults({});
+    setRejectedFiles([]);
   }, []);
 
   const handleConverted = useCallback(
@@ -101,13 +168,27 @@ export function HeroSection() {
       className="flex flex-col items-center justify-center pt-20 pb-12 px-6 mx-auto max-w-[1120px] text-center"
       id="tools"
     >
-      <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-[56px] font-bold text-on-background mb-6 max-w-3xl leading-tight">
-        Convert Images Instantly. No Upload Needed.
+      <div className="flex items-center gap-2 mb-4">
+        <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full uppercase tracking-wide">
+          {inputFormat}
+        </span>
+        <ArrowRight className="h-4 w-4 text-on-surface-variant" />
+        <span className="px-3 py-1 bg-success/10 text-success text-sm font-medium rounded-full uppercase tracking-wide">
+          {outputFormat}
+        </span>
+      </div>
+
+      <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl sm:text-4xl lg:text-5xl font-bold text-on-background mb-4 max-w-3xl leading-tight">
+        {title}
       </h1>
-      <p className="text-lg text-on-surface-variant mb-10 max-w-2xl leading-relaxed">
-        Lightning-fast, secure image conversion powered by local WebAssembly.
-        Your files never leave your device.
+      <p className="text-lg text-on-surface-variant mb-4 max-w-2xl leading-relaxed">
+        {subtitle}
       </p>
+      {description && (
+        <p className="text-sm text-on-surface-variant/80 mb-8 max-w-xl">
+          {description}
+        </p>
+      )}
 
       {/* Settings Bar */}
       <div className="w-full max-w-[800px] mb-4">
@@ -124,7 +205,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <div>
                 <label className="text-sm font-medium text-on-background block mb-1">
-                  Default Output Format
+                  Output Format
                 </label>
                 <select
                   value={defaultFormat}
@@ -133,7 +214,7 @@ export function HeroSection() {
                   }
                   className="text-sm border border-border rounded-md px-3 py-2 bg-background text-on-background focus:border-primary focus:outline-none"
                 >
-                  {FORMATS.map((fmt) => (
+                  {ALL_FORMATS.map((fmt) => (
                     <option key={fmt} value={fmt}>
                       {fmt.toUpperCase()}
                     </option>
@@ -180,21 +261,36 @@ export function HeroSection() {
             strokeWidth={1.5}
           />
           <p className="font-[family-name:var(--font-space-grotesk)] text-xl font-medium text-on-background mb-2">
-            Drag & Drop images here
+            Drag & Drop {inputFormat.toUpperCase()} images here
           </p>
           <p className="text-base text-on-surface-variant">
             or click to browse from your computer
+          </p>
+          <p className="text-xs text-on-surface-variant/70 mt-2">
+            Only {inputFormat.toUpperCase()} files accepted
           </p>
           <input
             ref={fileInputRef}
             type="file"
             multiple
-            accept="image/*"
+            accept={acceptTypes}
             className="hidden"
             onChange={handleFileSelect}
           />
         </div>
       </div>
+
+      {/* Rejected files warning */}
+      {rejectedFiles.length > 0 && (
+        <div className="w-full max-w-[800px] mb-4 bg-warning/10 border border-warning/30 rounded-lg p-3 text-left">
+          <p className="text-sm text-warning font-medium mb-1">
+            Some files were skipped (wrong format):
+          </p>
+          <p className="text-xs text-on-surface-variant">
+            {rejectedFiles.join(", ")}
+          </p>
+        </div>
+      )}
 
       {/* File List */}
       {files.length > 0 && (
@@ -250,9 +346,9 @@ export function HeroSection() {
         </div>
       )}
 
-      {/* Format Pills - Quick select */}
+      {/* Output Format Pills */}
       <div className="flex flex-wrap justify-center gap-3">
-        {FORMATS.map((fmt) => (
+        {ALL_FORMATS.map((fmt) => (
           <button
             key={fmt}
             onClick={() => setDefaultFormat(fmt)}

@@ -3,6 +3,7 @@ import { DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { AnalyticsScripts } from "@/components/Analytics";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -93,6 +94,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <AnalyticsScripts />
       </body>
     </html>
   );

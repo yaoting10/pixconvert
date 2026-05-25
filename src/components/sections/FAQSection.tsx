@@ -3,7 +3,12 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const defaultFaqs: FAQItem[] = [
   {
     question: "Are my files really private?",
     answer:
@@ -56,16 +61,22 @@ const faqs = [
   },
 ];
 
-export function FAQSection() {
+interface FAQSectionProps {
+  faqs?: FAQItem[];
+  title?: string;
+}
+
+export function FAQSection({ faqs, title }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const items = faqs ?? defaultFaqs;
 
   return (
     <section className="py-20 px-6 mx-auto max-w-[1120px] border-t border-outline-variant" id="faq">
       <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-10 text-center">
-        Frequently Asked Questions
+        {title ?? "Frequently Asked Questions"}
       </h2>
       <div className="max-w-3xl mx-auto space-y-3">
-        {faqs.map((faq, index) => (
+        {items.map((faq, index) => (
           <div
             key={index}
             className="bg-surface-container-lowest border border-border rounded-lg overflow-hidden"
