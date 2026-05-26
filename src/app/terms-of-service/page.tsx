@@ -4,6 +4,23 @@ export const metadata: Metadata = {
   title: "Terms of Service | PixConvert",
   description:
     "PixConvert terms of service. Free local image conversion tool. By using our service, you agree to these terms.",
+  alternates: {
+    canonical: "https://pixconvert.org/terms-of-service",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://pixconvert.org/terms-of-service",
+    siteName: "PixConvert",
+    title: "Terms of Service | PixConvert",
+    description:
+      "PixConvert terms of service. Free local image conversion tool. By using our service, you agree to these terms.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Terms of Service | PixConvert",
+    description:
+      "PixConvert terms of service. Free local image conversion tool.",
+  },
 };
 
 export default function TermsOfServicePage() {

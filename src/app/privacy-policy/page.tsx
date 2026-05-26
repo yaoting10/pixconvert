@@ -4,6 +4,23 @@ export const metadata: Metadata = {
   title: "Privacy Policy | PixConvert",
   description:
     "PixConvert privacy policy. We process all images locally in your browser. Your files never leave your device.",
+  alternates: {
+    canonical: "https://pixconvert.org/privacy-policy",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://pixconvert.org/privacy-policy",
+    siteName: "PixConvert",
+    title: "Privacy Policy | PixConvert",
+    description:
+      "PixConvert privacy policy. We process all images locally in your browser. Your files never leave your device.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Privacy Policy | PixConvert",
+    description:
+      "PixConvert privacy policy. We process all images locally in your browser.",
+  },
 };
 
 export default function PrivacyPolicyPage() {
