@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 import { ArrowRight, Check, X, Globe, Zap, Image } from "lucide-react";
@@ -31,13 +31,46 @@ export const metadata: Metadata = {
   },
 };
 
+const webpGuideFaqs: FAQItem[] = [
+  {
+    question: "Who created WebP and why?",
+    answer:
+      "WebP was developed by Google in 2010 based on the VP8 video codec. Google created it to make the web faster by reducing image file sizes without sacrificing quality. Smaller images mean faster page loads, lower bandwidth costs, and better user experience.",
+  },
+  {
+    question: "Is WebP better than JPG for photographs?",
+    answer:
+      "Yes, for web use. WebP's lossy compression typically produces files 25-35% smaller than JPG at the same visual quality. This means faster loading times for your website visitors. However, JPG still has wider compatibility for offline use and older systems.",
+  },
+  {
+    question: "Can WebP replace PNG completely?",
+    answer:
+      "For web use, mostly yes. WebP supports transparency (alpha channel) just like PNG, but produces smaller files. However, PNG still has advantages: universal compatibility, better editing support in some software, and pixel-perfect lossless compression for graphics.",
+  },
+  {
+    question: "Does WebP support animation like GIF?",
+    answer:
+      "Yes! Animated WebP is a modern replacement for GIF. It supports full 24-bit color (vs GIF's 256 colors) and typically produces files 50-70% smaller than equivalent GIFs. Most modern browsers support animated WebP.",
+  },
+  {
+    question: "How do I use WebP images on my website?",
+    answer:
+      "Use the HTML \u003cpicture\u003e element to serve WebP to modern browsers while providing JPG/PNG fallbacks for older ones. Many content management systems (WordPress, Next.js) now automatically generate WebP versions of uploaded images.",
+  },
+  {
+    question: "Will WebP become the standard image format?",
+    answer:
+      "It's heading that way. With 96%+ browser support and adoption by major platforms (YouTube, Facebook, Netflix), WebP is already the de facto standard for web images. The newer AVIF format offers even better compression but has less support.",
+  },
+];
+
 export default function WhatIsWebpPage() {
   return (
     <>
       <ArticleHeader />
       <WhatIsWebpContent />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={webpGuideFaqs} title="WebP FAQ" />
       <FooterCTASection />
     </>
   );

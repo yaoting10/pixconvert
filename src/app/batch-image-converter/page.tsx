@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -31,13 +31,46 @@ export const metadata: Metadata = {
   },
 };
 
+const batchFaqs: FAQItem[] = [
+  {
+    question: "How many images can I convert at once?",
+    answer:
+      "There is no artificial limit. You can convert as many images as your device can handle. The only constraint is your computer's available RAM. Most users can batch convert 50-100 images at once without issues.",
+  },
+  {
+    question: "Can I convert different formats in the same batch?",
+    answer:
+      "Yes! You can mix JPG, PNG, WebP, and other formats in the same batch. Each file can be converted to a different output format. For example, you can convert some files to WebP for your website while converting others to PNG for editing.",
+  },
+  {
+    question: "Will batch conversion slow down my computer?",
+    answer:
+      "Batch conversion uses your CPU's multiple cores for parallel processing. While it will use significant CPU resources during conversion, it won't harm your computer. You can adjust the number of concurrent conversions if needed.",
+  },
+  {
+    question: "Do all files get the same output format?",
+    answer:
+      "By default, yes — all files are converted to the format you select. However, you can change individual files to different output formats before downloading. This gives you flexibility when processing mixed batches.",
+  },
+  {
+    question: "How do I download all converted files?",
+    answer:
+      "After conversion, you can download all files as a single ZIP archive. This keeps your files organized and makes it easy to transfer them to other devices or upload them to your website.",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+];
+
 export default function BatchConverterPage() {
   return (
     <>
       <BatchHero />
       <BatchFeatures />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={batchFaqs} title="Batch Conversion FAQ" />
       <FooterCTASection />
     </>
   );

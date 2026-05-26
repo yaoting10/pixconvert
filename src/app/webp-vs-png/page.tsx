@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 import { ArrowRight, Check, X, Shield, Globe, Zap, Image } from "lucide-react";
@@ -30,13 +30,46 @@ export const metadata: Metadata = {
   },
 };
 
+const webpVsPngFaqs: FAQItem[] = [
+  {
+    question: "Is WebP always smaller than PNG?",
+    answer:
+      "In most cases, yes. WebP lossless compression typically produces files 20-30% smaller than PNG. WebP lossy compression can be 50-70% smaller than PNG while maintaining similar visual quality. However, for very simple images with few colors, PNG can sometimes be competitive.",
+  },
+  {
+    question: "Should I use PNG or WebP for my website logo?",
+    answer:
+      "For web deployment, use WebP. It will be significantly smaller while maintaining the same transparency and quality. Keep a PNG version as a source file for editing. Use the HTML \u003cpicture\u003e element to serve WebP with a PNG fallback for maximum compatibility.",
+  },
+  {
+    question: "Does converting PNG to WebP lose quality?",
+    answer:
+      "With lossless WebP conversion, no quality is lost at all — the image is pixel-perfect. With lossy WebP, there may be minor quality loss depending on the compression level, but at 85%+ quality settings, the difference is usually invisible to the human eye.",
+  },
+  {
+    question: "Why do some people still prefer PNG over WebP?",
+    answer:
+      "PNG has universal compatibility — every browser, image editor, and operating system supports it. Some designers prefer PNG for editing because it's been the standard for decades. Additionally, PNG supports some features WebP doesn't, like interlaced loading and certain metadata formats.",
+  },
+  {
+    question: "Can I convert WebP back to PNG without losing quality?",
+    answer:
+      "If the WebP was saved with lossless compression, yes — converting back to PNG will be pixel-perfect. If the WebP used lossy compression, some quality was already lost in the WebP encoding, and that loss cannot be recovered. Always keep your original PNGs as source files.",
+  },
+  {
+    question: "Which format is better for SEO: WebP or PNG?",
+    answer:
+      "WebP is better for SEO because it improves page load speed, which is a Google ranking factor. Faster-loading pages tend to rank higher and provide better user experience. However, using PNG with proper compression is still better than using unoptimized images of any format.",
+  },
+];
+
 export default function WebpVsPngPage() {
   return (
     <>
       <ArticleHeader />
       <WebpVsPngContent />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={webpVsPngFaqs} title="WebP vs PNG FAQ" />
       <FooterCTASection />
     </>
   );
