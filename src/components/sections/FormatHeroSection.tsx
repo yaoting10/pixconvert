@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef } from "react";
-import { UploadCloud, Package, Trash2, Settings, ArrowRight } from "lucide-react";
+import { UploadCloud, Package, Trash2, Settings } from "lucide-react";
 import { FileListItem } from "@/components/ui/FileListItem";
 import {
   createZip,
@@ -12,66 +12,27 @@ import {
 
 const ALL_FORMATS: OutputFormat[] = ["jpg", "png", "webp", "avif", "bmp", "gif"];
 
-// Map input format to accepted MIME types and extensions
-const INPUT_ACCEPT_MAP: Record<string, string> = {
-  jpg: ".jpg,.jpeg,.jpe,.jfif",
-  png: ".png",
-  webp: ".webp",
-  avif: ".avif",
-  bmp: ".bmp",
-  gif: ".gif",
-  tiff: ".tiff,.tif",
-  heic: ".heic,.heif",
-};
-
-function getInputAccept(inputFormat: string): string {
-  return INPUT_ACCEPT_MAP[inputFormat.toLowerCase()] || "image/*";
-}
-
-function filterFilesByInputFormat(files: File[], inputFormat: string): File[] {
-  const extMap: Record<string, string[]> = {
-    jpg: [".jpg", ".jpeg", ".jpe", ".jfif"],
-    png: [".png"],
-    webp: [".webp"],
-    avif: [".avif"],
-    bmp: [".bmp"],
-    gif: [".gif"],
-    tiff: [".tiff", ".tif"],
-    heic: [".heic", ".heif"],
-  };
-  const exts = extMap[inputFormat.toLowerCase()];
-  if (!exts) return files;
-  return files.filter((f) =>
-    exts.some((ext) => f.name.toLowerCase().endsWith(ext))
-  );
-}
-
 interface FormatHeroSectionProps {
   title: string;
   subtitle: string;
-  inputFormat: string;
-  outputFormat: OutputFormat;
+  defaultOutputFormat?: OutputFormat;
   description?: string;
 }
 
 export function FormatHeroSection({
   title,
   subtitle,
-  inputFormat,
-  outputFormat,
+  defaultOutputFormat = "png",
   description,
 }: FormatHeroSectionProps) {
   const [files, setFiles] = useState<File[]>([]);
-  const [defaultFormat, setDefaultFormat] = useState<OutputFormat>(outputFormat);
+  const [defaultFormat, setDefaultFormat] = useState<OutputFormat>(defaultOutputFormat);
   const [quality, setQuality] = useState(85);
   const [isDragging, setIsDragging] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [results, setResults] = useState<Record<string, ConversionResult>>({});
   const [zipLoading, setZipLoading] = useState(false);
-  const [rejectedFiles, setRejectedFiles] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const acceptTypes = getInputAccept(inputFormat);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -83,38 +44,23 @@ export function FormatHeroSection({
     setIsDragging(false);
   }, []);
 
-  const handleDrop = useCallback(
-    (e: React.DragEvent) => {
-      e.preventDefault();
-      setIsDragging(false);
-      setRejectedFiles([]);
-      const allDropped = Array.from(e.dataTransfer.files).filter((f) =>
-        f.type.startsWith("image/")
-      );
-      const valid = filterFilesByInputFormat(allDropped, inputFormat);
-      const rejected = allDropped
-        .filter((f) => !valid.includes(f))
-        .map((f) => f.name);
-      if (rejected.length > 0) setRejectedFiles(rejected);
-      setFiles((prev) => [...prev, ...valid]);
-    },
-    [inputFormat]
-  );
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const droppedFiles = Array.from(e.dataTransfer.files).filter((f) =>
+      f.type.startsWith("image/")
+    );
+    setFiles((prev) => [...prev, ...droppedFiles]);
+  }, []);
 
   const handleFileSelect = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      setRejectedFiles([]);
-      const allSelected = Array.from(e.target.files || []).filter((f) =>
+      const selected = Array.from(e.target.files || []).filter((f) =>
         f.type.startsWith("image/")
       );
-      const valid = filterFilesByInputFormat(allSelected, inputFormat);
-      const rejected = allSelected
-        .filter((f) => !valid.includes(f))
-        .map((f) => f.name);
-      if (rejected.length > 0) setRejectedFiles(rejected);
-      setFiles((prev) => [...prev, ...valid]);
+      setFiles((prev) => [...prev, ...selected]);
     },
-    [inputFormat]
+    []
   );
 
   const removeFile = useCallback((index: number) => {
@@ -129,7 +75,6 @@ export function FormatHeroSection({
   const clearAll = useCallback(() => {
     setFiles([]);
     setResults({});
-    setRejectedFiles([]);
   }, []);
 
   const handleConverted = useCallback(
@@ -168,16 +113,6 @@ export function FormatHeroSection({
       className="flex flex-col items-center justify-center pt-20 pb-12 px-6 mx-auto max-w-[1120px] text-center"
       id="tools"
     >
-      <div className="flex items-center gap-2 mb-4">
-        <span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full uppercase tracking-wide">
-          {inputFormat}
-        </span>
-        <ArrowRight className="h-4 w-4 text-on-surface-variant" />
-        <span className="px-3 py-1 bg-success/10 text-success text-sm font-medium rounded-full uppercase tracking-wide">
-          {outputFormat}
-        </span>
-      </div>
-
       <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl sm:text-4xl lg:text-5xl font-bold text-on-background mb-4 max-w-3xl leading-tight">
         {title}
       </h1>
@@ -261,36 +196,24 @@ export function FormatHeroSection({
             strokeWidth={1.5}
           />
           <p className="font-[family-name:var(--font-space-grotesk)] text-xl font-medium text-on-background mb-2">
-            Drag & Drop {inputFormat.toUpperCase()} images here
+            Drag & Drop images here
           </p>
           <p className="text-base text-on-surface-variant">
             or click to browse from your computer
           </p>
           <p className="text-xs text-on-surface-variant/70 mt-2">
-            Only {inputFormat.toUpperCase()} files accepted
+            Supports JPG, PNG, WebP, AVIF, HEIC, GIF, BMP, TIFF
           </p>
           <input
             ref={fileInputRef}
             type="file"
             multiple
-            accept={acceptTypes}
+            accept="image/*"
             className="hidden"
             onChange={handleFileSelect}
           />
         </div>
       </div>
-
-      {/* Rejected files warning */}
-      {rejectedFiles.length > 0 && (
-        <div className="w-full max-w-[800px] mb-4 bg-warning/10 border border-warning/30 rounded-lg p-3 text-left">
-          <p className="text-sm text-warning font-medium mb-1">
-            Some files were skipped (wrong format):
-          </p>
-          <p className="text-xs text-on-surface-variant">
-            {rejectedFiles.join(", ")}
-          </p>
-        </div>
-      )}
 
       {/* File List */}
       {files.length > 0 && (

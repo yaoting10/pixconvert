@@ -70,8 +70,7 @@ export default function HeicToJpgPage() {
       <FormatHeroSection
         title="Convert HEIC to JPG Online"
         subtitle="Turn your iPhone HEIC photos into universally compatible JPG files. Share with anyone — no special software needed."
-        inputFormat="heic"
-        outputFormat="jpg"
+        defaultOutputFormat="jpg"
         description="Upload your iPhone HEIC/HEIF photos and convert them to JPG instantly. HEIC files are great for storage but not everyone can open them. JPG works everywhere."
       />
       <HeicJpgInfoSection />

@@ -69,8 +69,7 @@ export default function JpgToPngPage() {
       <FormatHeroSection
         title="Convert JPG to PNG Online"
         subtitle="Transform your JPG images to PNG format with transparency support. Fast, free, and completely private."
-        inputFormat="jpg"
-        outputFormat="png"
+        defaultOutputFormat="png"
         description="Drag & drop your JPG/JPEG files below. We'll convert them to high-quality PNG images right in your browser — no server uploads ever."
       />
       <JpgPngInfoSection />

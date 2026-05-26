@@ -70,8 +70,7 @@ export default function PngToJpgPage() {
       <FormatHeroSection
         title="Convert PNG to JPG Online"
         subtitle="Reduce your image file sizes by converting PNG to JPG. Perfect for sharing, email attachments, and saving storage space."
-        inputFormat="png"
-        outputFormat="jpg"
+        defaultOutputFormat="jpg"
         description="Upload your PNG files and convert them to JPG instantly. JPG files are typically 3-5x smaller than PNG, making them ideal for sharing and storage."
       />
       <PngJpgInfoSection />

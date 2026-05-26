@@ -69,8 +69,7 @@ export default function WebpToPngPage() {
       <FormatHeroSection
         title="Convert WebP to PNG Online"
         subtitle="Turn WebP images into universally compatible PNG files. Perfect for editing, printing, or sharing with anyone."
-        inputFormat="webp"
-        outputFormat="png"
+        defaultOutputFormat="png"
         description="Upload your WebP files and convert them to PNG instantly. PNG works everywhere — every browser, editor, and device supports it."
       />
       <WebpPngInfoSection />

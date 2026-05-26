@@ -69,8 +69,7 @@ export default function JpgToWebpPage() {
       <FormatHeroSection
         title="Convert JPG to WebP Online"
         subtitle="Optimize your images for the web. Convert JPG to WebP and reduce file sizes by up to 35% without visible quality loss."
-        inputFormat="jpg"
-        outputFormat="webp"
+        defaultOutputFormat="webp"
         description="Upload your JPG/JPEG files and convert them to WebP format instantly. WebP is the modern image format recommended by Google for faster websites."
       />
       <JpgWebpInfoSection />

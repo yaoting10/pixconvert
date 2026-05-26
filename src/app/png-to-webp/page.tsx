@@ -69,8 +69,7 @@ export default function PngToWebpPage() {
       <FormatHeroSection
         title="Convert PNG to WebP Online"
         subtitle="Shrink your PNG images by up to 35% with WebP format. Keep full transparency and quality while optimizing for the web."
-        inputFormat="png"
-        outputFormat="webp"
+        defaultOutputFormat="webp"
         description="Upload your PNG files and convert them to WebP instantly. WebP offers smaller file sizes than PNG with the same visual quality — perfect for faster websites."
       />
       <PngWebpInfoSection />
