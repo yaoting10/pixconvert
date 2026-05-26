@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FormatHeroSection } from "@/components/sections/FormatHeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -31,6 +31,39 @@ export const metadata: Metadata = {
   },
 };
 
+const pngToJpgFaqs: FAQItem[] = [
+  {
+    question: "Will I lose image quality converting PNG to JPG?",
+    answer:
+      "JPG uses lossy compression, so some quality loss is inevitable. However, at high quality settings (85-95%), the difference is barely visible to the human eye. We recommend adjusting the quality slider to find the right balance between file size and visual quality.",
+  },
+  {
+    question: "What happens to transparent backgrounds when converting PNG to JPG?",
+    answer:
+      "JPG does not support transparency. When you convert a PNG with a transparent background to JPG, the transparent areas will be filled with a solid color (typically white or black). If you need to keep transparency, consider converting to WebP instead.",
+  },
+  {
+    question: "How much smaller will my files be after converting PNG to JPG?",
+    answer:
+      "Typically 3-5x smaller, depending on the image content. Photos with lots of colors and gradients compress very well as JPG. Simple graphics with few colors may not see as much reduction.",
+  },
+  {
+    question: "Should I convert all my PNGs to JPG for my website?",
+    answer:
+      "Not all of them. Convert photographs and complex images to JPG for smaller file sizes. Keep logos, icons, and images needing transparency as PNG (or convert to WebP for even better compression with transparency support).",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+  {
+    question: "Is it completely free?",
+    answer:
+      "Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.",
+  },
+];
+
 export default function PngToJpgPage() {
   return (
     <>
@@ -43,7 +76,7 @@ export default function PngToJpgPage() {
       />
       <PngJpgInfoSection />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={pngToJpgFaqs} title="PNG to JPG FAQ" />
       <FooterCTASection />
     </>
   );

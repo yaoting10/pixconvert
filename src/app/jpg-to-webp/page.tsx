@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FormatHeroSection } from "@/components/sections/FormatHeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -30,6 +30,39 @@ export const metadata: Metadata = {
   },
 };
 
+const jpgToWebpFaqs: FAQItem[] = [
+  {
+    question: "Will WebP images work on all browsers?",
+    answer:
+      "WebP is supported by 96%+ of modern browsers including Chrome, Firefox, Safari, and Edge. For the rare older browsers that don't support it, you can use the <picture> element to provide a JPG fallback.",
+  },
+  {
+    question: "How much smaller are WebP files compared to JPG?",
+    answer:
+      "WebP files are typically 25-35% smaller than JPG at the same visual quality. For a website with many images, this can significantly reduce page load times and improve user experience.",
+  },
+  {
+    question: "Does converting JPG to WebP improve my Google ranking?",
+    answer:
+      "Indirectly, yes. Google uses page speed as a ranking factor, and smaller images load faster. WebP also helps improve Core Web Vitals metrics like Largest Contentful Paint (LCP), which Google considers in rankings.",
+  },
+  {
+    question: "Can I convert WebP back to JPG if needed?",
+    answer:
+      "Yes! Use our WebP to JPG converter. However, keep in mind that converting from lossy WebP to lossy JPG may result in slightly more quality loss due to double compression.",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+  {
+    question: "Is it completely free?",
+    answer:
+      "Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.",
+  },
+];
+
 export default function JpgToWebpPage() {
   return (
     <>
@@ -42,7 +75,7 @@ export default function JpgToWebpPage() {
       />
       <JpgWebpInfoSection />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={jpgToWebpFaqs} title="JPG to WebP FAQ" />
       <FooterCTASection />
     </>
   );

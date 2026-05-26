@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FormatHeroSection } from "@/components/sections/FormatHeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -31,6 +31,39 @@ export const metadata: Metadata = {
   },
 };
 
+const heicToJpgFaqs: FAQItem[] = [
+  {
+    question: "What is HEIC and why does my iPhone use it?",
+    answer:
+      "HEIC (High Efficiency Image Container) is Apple's preferred photo format since iOS 11. It produces high-quality images at roughly half the file size of JPG. However, it's not universally supported outside the Apple ecosystem, which is why converting to JPG is often necessary.",
+  },
+  {
+    question: "Can Windows computers open HEIC files?",
+    answer:
+      "Windows 10 and 11 can open HEIC files, but you need to install the HEIF Image Extensions from the Microsoft Store. Older Windows versions and many Android phones cannot open HEIC files at all. Converting to JPG ensures everyone can view your photos.",
+  },
+  {
+    question: "Will my photo quality decrease when converting HEIC to JPG?",
+    answer:
+      "There may be a slight quality reduction because JPG uses lossy compression while HEIC uses more efficient compression. However, at high quality settings, the difference is minimal and most people won't notice. The trade-off is worth it for universal compatibility.",
+  },
+  {
+    question: "Can I convert HEIC photos from my iPhone directly?",
+    answer:
+      "Yes! You can transfer your HEIC photos to your computer and use PixConvert, or even use it directly on your iPhone's browser. Since all processing happens locally in your browser, your photos never leave your device.",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+  {
+    question: "Is it completely free?",
+    answer:
+      "Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.",
+  },
+];
+
 export default function HeicToJpgPage() {
   return (
     <>
@@ -43,7 +76,7 @@ export default function HeicToJpgPage() {
       />
       <HeicJpgInfoSection />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={heicToJpgFaqs} title="HEIC to JPG FAQ" />
       <FooterCTASection />
     </>
   );

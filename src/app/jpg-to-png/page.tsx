@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FormatHeroSection } from "@/components/sections/FormatHeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -30,6 +30,39 @@ export const metadata: Metadata = {
   },
 };
 
+const jpgToPngFaqs: FAQItem[] = [
+  {
+    question: "Will my image quality improve when converting JPG to PNG?",
+    answer:
+      "Converting JPG to PNG won't restore lost quality from the original JPG compression, but it will prevent further quality loss. PNG uses lossless compression, so you can save and edit the file multiple times without degrading the image.",
+  },
+  {
+    question: "Can I make a JPG image transparent by converting to PNG?",
+    answer:
+      "No — if the original JPG doesn't have transparency, converting to PNG won't create it. JPG doesn't support alpha channels. However, once you have a PNG, you can use image editing software to remove backgrounds and create transparency.",
+  },
+  {
+    question: "Why is my PNG file larger than the original JPG?",
+    answer:
+      "PNG files are typically larger because they use lossless compression and may store more color information. JPG uses lossy compression which discards some data to achieve smaller file sizes. The trade-off is worth it when you need transparency or plan to edit the image.",
+  },
+  {
+    question: "Is PNG better than JPG for printing?",
+    answer:
+      "For graphics, logos, and text-heavy images, yes — PNG is better because it preserves sharp edges and fine details. For photographs, high-quality JPG (90%+ quality) is usually sufficient and produces smaller files.",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+  {
+    question: "Is it completely free?",
+    answer:
+      "Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.",
+  },
+];
+
 export default function JpgToPngPage() {
   return (
     <>
@@ -42,7 +75,7 @@ export default function JpgToPngPage() {
       />
       <JpgPngInfoSection />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={jpgToPngFaqs} title="JPG to PNG FAQ" />
       <FooterCTASection />
     </>
   );

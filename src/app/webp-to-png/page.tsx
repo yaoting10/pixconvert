@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { FormatHeroSection } from "@/components/sections/FormatHeroSection";
-import { FAQSection } from "@/components/sections/FAQSection";
+import { FAQSection, FAQItem } from "@/components/sections/FAQSection";
 import { WhyLocalSection } from "@/components/sections/WhyLocalSection";
 import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
@@ -30,6 +30,39 @@ export const metadata: Metadata = {
   },
 };
 
+const webpToPngFaqs: FAQItem[] = [
+  {
+    question: "Why would I convert WebP back to PNG?",
+    answer:
+      "While WebP is great for the web, PNG has universal compatibility. Some older software, image editors, or devices may not support WebP. Converting to PNG ensures your images can be opened and edited anywhere without compatibility issues.",
+  },
+  {
+    question: "Will my transparent WebP stay transparent as PNG?",
+    answer:
+      "Yes. Both WebP and PNG support alpha channel transparency. When converting WebP to PNG, the transparent background is fully preserved, making it perfect for logos, icons, and graphics with transparent backgrounds.",
+  },
+  {
+    question: "Will the PNG file be larger than the original WebP?",
+    answer:
+      "Usually yes. PNG uses lossless compression which produces larger files than WebP's efficient compression. However, PNG's universal compatibility makes it worth the trade-off when you need to share or edit the image in software that doesn't support WebP.",
+  },
+  {
+    question: "Can I convert WebP to PNG for printing?",
+    answer:
+      "Absolutely. PNG is an excellent format for printing because it uses lossless compression and preserves all image details. Most print shops and professional printing software work best with PNG files.",
+  },
+  {
+    question: "Are my files really private?",
+    answer:
+      "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
+  },
+  {
+    question: "Is it completely free?",
+    answer:
+      "Yes. PixConvert is fully free to use with no hidden costs, watermarks, or premium tiers.",
+  },
+];
+
 export default function WebpToPngPage() {
   return (
     <>
@@ -42,7 +75,7 @@ export default function WebpToPngPage() {
       />
       <WebpPngInfoSection />
       <WhyLocalSection />
-      <FAQSection />
+      <FAQSection faqs={webpToPngFaqs} title="WebP to PNG FAQ" />
       <FooterCTASection />
     </>
   );
