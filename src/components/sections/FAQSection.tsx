@@ -10,7 +10,7 @@ export interface FAQItem {
 
 const defaultFaqs: FAQItem[] = [
   {
-    question: "Are my files really private?",
+    question: "Are my files really private ?",
     answer:
       "Yes. All processing happens locally in your browser using WebAssembly. Your files are never uploaded to any server.",
   },
