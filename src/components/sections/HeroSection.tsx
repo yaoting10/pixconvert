@@ -13,7 +13,7 @@ import {
 const FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "heic"];
 
 export function HeroSection() {
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<{ file: File; id: string }[]>([]);
   const [defaultFormat, setDefaultFormat] = useState<OutputFormat>("png");
   const [quality, setQuality] = useState(85);
   const [isDragging, setIsDragging] = useState(false);
@@ -38,7 +38,10 @@ export function HeroSection() {
     const droppedFiles = Array.from(e.dataTransfer.files).filter((f) =>
       f.type.startsWith("image/")
     );
-    setFiles((prev) => [...prev, ...droppedFiles]);
+    setFiles((prev) => [
+      ...prev,
+      ...droppedFiles.map((f) => ({ file: f, id: `${f.name}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}` })),
+    ]);
   }, []);
 
   const handleFileSelect = useCallback(
@@ -46,16 +49,21 @@ export function HeroSection() {
       const selected = Array.from(e.target.files || []).filter((f) =>
         f.type.startsWith("image/")
       );
-      setFiles((prev) => [...prev, ...selected]);
+      setFiles((prev) => [
+        ...prev,
+        ...selected.map((f) => ({ file: f, id: `${f.name}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}` })),
+      ]);
+      // Reset input so the same file can be selected again
+      e.target.value = "";
     },
     []
   );
 
-  const removeFile = useCallback((index: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== index));
+  const removeFile = useCallback((id: string) => {
+    setFiles((prev) => prev.filter((item) => item.id !== id));
     setResults((prev) => {
       const next = { ...prev };
-      delete next[index];
+      delete next[id];
       return next;
     });
   }, []);
@@ -66,8 +74,8 @@ export function HeroSection() {
   }, []);
 
   const handleConverted = useCallback(
-    (index: number, result: ConversionResult) => {
-      setResults((prev) => ({ ...prev, [index]: result }));
+    (id: string, result: ConversionResult) => {
+      setResults((prev) => ({ ...prev, [id]: result }));
     },
     []
   );
@@ -236,14 +244,14 @@ export function HeroSection() {
           </div>
 
           <div className="space-y-1">
-            {files.map((file, index) => (
+            {files.map((item) => (
               <FileListItem
-                key={`${file.name}-${index}`}
-                file={file}
+                key={item.id}
+                file={item.file}
                 defaultFormat={defaultFormat}
                 quality={quality}
-                onRemove={() => removeFile(index)}
-                onConverted={(result) => handleConverted(index, result)}
+                onRemove={() => removeFile(item.id)}
+                onConverted={(result) => handleConverted(item.id, result)}
               />
             ))}
           </div>
