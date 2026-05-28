@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, Download, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import {
   convertImage,
@@ -43,10 +43,15 @@ export function FileListItem({
   const [result, setResult] = useState<ConversionResult | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
 
-  // Generate preview
-  const reader = new FileReader();
-  reader.onload = (e) => setPreview(e.target?.result as string);
-  reader.readAsDataURL(file);
+  // Generate preview in useEffect to avoid running on every render
+  useEffect(() => {
+    const reader = new FileReader();
+    reader.onload = (e) => setPreview(e.target?.result as string);
+    reader.readAsDataURL(file);
+    return () => {
+      reader.abort();
+    };
+  }, [file]);
 
   const handleConvert = async () => {
     setStatus("converting");
