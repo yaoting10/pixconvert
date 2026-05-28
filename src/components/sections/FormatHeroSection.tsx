@@ -12,6 +12,41 @@ import {
 
 const ALL_FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "heic"];
 
+// Map input format to accepted MIME types and extensions
+const INPUT_ACCEPT_MAP: Record<string, string> = {
+  jpg: ".jpg,.jpeg,.jpe,.jfif",
+  jpeg: ".jpg,.jpeg,.jpe,.jfif",
+  png: ".png",
+  webp: ".webp",
+  avif: ".avif",
+  bmp: ".bmp",
+  gif: ".gif",
+  tiff: ".tiff,.tif",
+  heic: ".heic,.heif",
+};
+
+function getInputAccept(inputFormat: string): string {
+  return INPUT_ACCEPT_MAP[inputFormat.toLowerCase()] || "image/*";
+}
+
+function filterFilesByInputFormat(files: File[], inputFormat: string): File[] {
+  const extMap: Record<string, string[]> = {
+    jpg: [".jpg", ".jpeg", ".jpe", ".jfif"],
+    jpeg: [".jpg", ".jpeg", ".jpe", ".jfif"],
+    png: [".png"],
+    webp: [".webp"],
+    avif: [".avif"],
+    bmp: [".bmp"],
+    gif: [".gif"],
+    tiff: [".tiff", ".tif"],
+    heic: [".heic", ".heif"],
+  };
+  const exts = extMap[inputFormat.toLowerCase()];
+  if (!exts) return files;
+  return files.filter((f) =>
+    exts.some((ext) => f.name.toLowerCase().endsWith(ext))
+  );
+}
 interface FormatHeroSectionProps {
   title: string;
   subtitle: string;
