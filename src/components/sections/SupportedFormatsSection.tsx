@@ -1,4 +1,4 @@
-const formats = ["JPG", "PNG", "WebP", "AVIF", "BMP", "GIF", "TIFF", "HEIC"];
+const formats = ["JPG", "JPEG", "PNG", "WebP", "AVIF", "BMP", "GIF", "TIFF", "HEIC"];
 
 export function SupportedFormatsSection() {
   return (

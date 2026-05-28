@@ -21,11 +21,14 @@ interface FileListItemProps {
 
 const FORMAT_OPTIONS: { value: OutputFormat; label: string }[] = [
   { value: "jpg", label: "JPG" },
+  { value: "jpeg", label: "JPEG" },
   { value: "png", label: "PNG" },
   { value: "webp", label: "WebP" },
   { value: "avif", label: "AVIF" },
   { value: "bmp", label: "BMP" },
   { value: "gif", label: "GIF" },
+  { value: "tiff", label: "TIFF" },
+  { value: "heic", label: "HEIC" },
 ];
 
 export function FileListItem({

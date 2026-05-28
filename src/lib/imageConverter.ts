@@ -1,4 +1,4 @@
-export type OutputFormat = "jpg" | "png" | "webp" | "avif" | "bmp" | "gif" | "tiff" | "heic";
+export type OutputFormat = "jpg" | "jpeg" | "png" | "webp" | "avif" | "bmp" | "gif" | "tiff" | "heic";
 
 export interface ConversionOptions {
   quality: number; // 0.1 - 1.0
@@ -17,6 +17,7 @@ export interface ConversionResult {
 
 const MIME_TYPES: Record<OutputFormat, string> = {
   jpg: "image/jpeg",
+  jpeg: "image/jpeg",
   png: "image/png",
   webp: "image/webp",
   avif: "image/avif",
@@ -28,6 +29,7 @@ const MIME_TYPES: Record<OutputFormat, string> = {
 
 const EXTENSIONS: Record<OutputFormat, string> = {
   jpg: ".jpg",
+  jpeg: ".jpeg",
   png: ".png",
   webp: ".webp",
   avif: ".avif",
@@ -41,7 +43,7 @@ const EXTENSIONS: Record<OutputFormat, string> = {
  * Check if browser supports output format natively via canvas
  */
 export function isFormatSupported(format: OutputFormat): boolean {
-  if (format === "jpg" || format === "png" || format === "webp" || format === "bmp") {
+  if (format === "jpg" || format === "jpeg" || format === "png" || format === "webp" || format === "bmp") {
     return true;
   }
   // Check for AVIF support
@@ -79,10 +81,10 @@ function imageToCanvas(img: HTMLImageElement): HTMLCanvasElement {
 function canvasToBlob(canvas: HTMLCanvasElement, format: OutputFormat, quality: number): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const mimeType = MIME_TYPES[format];
-    
+
     // For PNG/GIF/BMP, quality parameter is ignored by canvas API
-    const q = ["jpg", "webp", "avif"].includes(format) ? quality : undefined;
-    
+    const q = ["jpg", "jpeg", "webp", "avif"].includes(format) ? quality : undefined;
+
     canvas.toBlob(
       (blob) => {
         if (blob) resolve(blob);
@@ -95,6 +97,24 @@ function canvasToBlob(canvas: HTMLCanvasElement, format: OutputFormat, quality: 
 }
 
 /**
+ * Convert canvas to TIFF blob using UTIF.js
+ */
+async function canvasToTiff(canvas: HTMLCanvasElement): Promise<Blob> {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Failed to get canvas context");
+
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const rgba = imageData.data;
+
+  // Dynamic import UTIF for browser
+  const UTIF = await import("utif2");
+
+  // Encode RGBA to TIFF
+  const tiffBuffer = (UTIF as any).encodeImage(new Uint8Array(rgba.buffer), canvas.width, canvas.height);
+  return new Blob([tiffBuffer], { type: "image/tiff" });
+}
+
+/**
  * Convert a single image file to the target format
  */
 export async function convertImage(
@@ -102,23 +122,30 @@ export async function convertImage(
   options: ConversionOptions
 ): Promise<ConversionResult> {
   const outputFilename = getOutputFilename(file.name, options.outputFormat);
-  
+
   try {
     const img = await loadImage(file);
     const canvas = imageToCanvas(img);
-    
+
     // Handle HEIC input (try to decode)
     if (file.name.toLowerCase().endsWith(".heic") || file.type === "image/heic") {
       // HEIC decoding would need a WASM library
       // For now, we attempt canvas conversion which may not work
       console.warn("HEIC input may have limited support in browsers");
     }
-    
-    const blob = await canvasToBlob(canvas, options.outputFormat, options.quality);
-    
+
+    let blob: Blob;
+
+    // Handle TIFF output using UTIF.js
+    if (options.outputFormat === "tiff") {
+      blob = await canvasToTiff(canvas);
+    } else {
+      blob = await canvasToBlob(canvas, options.outputFormat, options.quality);
+    }
+
     // Clean up
     URL.revokeObjectURL(img.src);
-    
+
     return {
       success: true,
       blob,
@@ -158,13 +185,13 @@ export function downloadFile(url: string, filename: string): void {
 export async function createZip(results: ConversionResult[]): Promise<Blob> {
   const JSZip = (await import("jszip")).default;
   const zip = new JSZip();
-  
+
   for (const result of results) {
     if (result.blob && result.success) {
       zip.file(result.filename, result.blob);
     }
   }
-  
+
   return zip.generateAsync({ type: "blob" });
 }
 

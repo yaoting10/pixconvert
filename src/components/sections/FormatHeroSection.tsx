@@ -10,7 +10,7 @@ import {
   type ConversionResult,
 } from "@/lib/imageConverter";
 
-const ALL_FORMATS: OutputFormat[] = ["jpg", "png", "webp", "avif", "bmp", "gif"];
+const ALL_FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "heic"];
 
 interface FormatHeroSectionProps {
   title: string;
