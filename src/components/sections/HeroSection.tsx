@@ -10,7 +10,7 @@ import {
   type ConversionResult,
 } from "@/lib/imageConverter";
 
-const FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "heic"];
+const FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "ico"];
 
 export function HeroSection() {
   const [files, setFiles] = useState<{ file: File; id: string }[]>([]);

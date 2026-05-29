@@ -7,7 +7,7 @@ import { LogoFull } from "@/components/ui/Logo";
 const toolLinks = [
   { label: "JPG to PNG", href: "/jpg-to-png" },
   { label: "PNG to WebP", href: "/png-to-webp" },
-  { label: "HEIC to JPG", href: "/heic-to-jpg" },
+  { label: "ICO to PNG", href: "/ico-to-png" },
   { label: "JPG to WebP", href: "/jpg-to-webp" },
   { label: "WebP to PNG", href: "/webp-to-png" },
   { label: "PNG to JPG", href: "/png-to-jpg" },

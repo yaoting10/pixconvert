@@ -1,4 +1,4 @@
-export type OutputFormat = "jpg" | "jpeg" | "png" | "webp" | "avif" | "bmp" | "gif" | "tiff" | "heic";
+export type OutputFormat = "jpg" | "jpeg" | "png" | "webp" | "avif" | "bmp" | "gif" | "tiff" | "ico";
 
 export interface ConversionOptions {
   quality: number; // 0.1 - 1.0
@@ -24,7 +24,7 @@ const MIME_TYPES: Record<OutputFormat, string> = {
   bmp: "image/bmp",
   gif: "image/gif",
   tiff: "image/tiff",
-  heic: "image/heic",
+  ico: "image/x-icon",
 };
 
 const EXTENSIONS: Record<OutputFormat, string> = {
@@ -36,7 +36,7 @@ const EXTENSIONS: Record<OutputFormat, string> = {
   bmp: ".bmp",
   gif: ".gif",
   tiff: ".tiff",
-  heic: ".heic",
+  ico: ".ico",
 };
 
 /**
@@ -127,11 +127,10 @@ export async function convertImage(
     const img = await loadImage(file);
     const canvas = imageToCanvas(img);
 
-    // Handle HEIC input (try to decode)
-    if (file.name.toLowerCase().endsWith(".heic") || file.type === "image/heic") {
-      // HEIC decoding would need a WASM library
-      // For now, we attempt canvas conversion which may not work
-      console.warn("HEIC input may have limited support in browsers");
+    // Handle ICO input (try to decode)
+    if (file.name.toLowerCase().endsWith(".ico")) {
+      // ICO files may contain multiple sizes; browser canvas can decode simple ones
+      console.warn("ICO input may have limited support in browsers");
     }
 
     let blob: Blob;

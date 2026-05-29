@@ -28,7 +28,7 @@ const FORMAT_OPTIONS: { value: OutputFormat; label: string }[] = [
   { value: "bmp", label: "BMP" },
   { value: "gif", label: "GIF" },
   { value: "tiff", label: "TIFF" },
-  { value: "heic", label: "HEIC" },
+  { value: "ico", label: "ICO" },
 ];
 
 export function FileListItem({

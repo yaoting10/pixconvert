@@ -12,7 +12,7 @@ const homeFaqs: FAQItem[] = [
   {
     question: "What image formats does PixConvert support?",
     answer:
-      "PixConvert supports JPG, PNG, WebP, AVIF, HEIC, GIF, BMP, and TIFF. You can convert between any of these formats. We also support batch conversion, so you can process multiple files at once.",
+      "PixConvert supports JPG, PNG, WebP, AVIF, ICO, GIF, BMP, and TIFF. You can convert between any of these formats. We also support batch conversion, so you can process multiple files at once.",
   },
   {
     question: "How is PixConvert different from other online converters?",

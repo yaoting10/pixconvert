@@ -8,7 +8,7 @@ export default function sitemap() {
     { path: "", priority: 1.0, freq: "weekly" as const },
     { path: "/jpg-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/png-to-webp", priority: 0.9, freq: "weekly" as const },
-    { path: "/heic-to-jpg", priority: 0.9, freq: "weekly" as const },
+    { path: "/ico-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/jpg-to-webp", priority: 0.9, freq: "weekly" as const },
     { path: "/webp-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/png-to-jpg", priority: 0.8, freq: "weekly" as const },

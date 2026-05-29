@@ -10,7 +10,7 @@ import {
   type ConversionResult,
 } from "@/lib/imageConverter";
 
-const ALL_FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "heic"];
+const ALL_FORMATS: OutputFormat[] = ["jpg", "jpeg", "png", "webp", "avif", "bmp", "gif", "tiff", "ico"];
 
 interface FormatHeroSectionProps {
   title: string;
@@ -202,7 +202,7 @@ export function FormatHeroSection({
             or click to browse from your computer
           </p>
           <p className="text-xs text-on-surface-variant/70 mt-2">
-            Supports JPG, PNG, WebP, AVIF, HEIC, GIF, BMP, TIFF
+            Supports JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF
           </p>
           <input
             ref={fileInputRef}

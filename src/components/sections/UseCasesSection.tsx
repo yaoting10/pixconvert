@@ -7,7 +7,7 @@ const useCases = [
   {
     title: "Office Users",
     description:
-      "Quickly change HEIC photos from your phone into universal JPGs for presentations.",
+      "Convert ICO icons to PNG for use in websites, apps, and design projects.",
   },
   {
     title: "Designers",

@@ -20,14 +20,14 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "PixConvert — Local Image Converter | Free & Private",
   description:
-    "Convert images instantly in your browser. JPG, PNG, WebP, AVIF, HEIC, GIF, BMP, TIFF. No upload needed — 100% private, free, and fast.",
+    "Convert images instantly in your browser. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload needed — 100% private, free, and fast.",
   keywords: [
     "image converter",
     "jpg to png",
     "png to webp",
     "webp converter",
     "avif converter",
-    "heic to jpg",
+    "ico to png",
     "batch image converter",
     "local image conversion",
     "privacy first converter",

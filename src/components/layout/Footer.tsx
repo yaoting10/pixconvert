@@ -29,8 +29,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href="/heic-to-jpg" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                HEIC to JPG
+              <a href="/ico-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+                ICO to PNG
               </a>
             </li>
             <li>
