@@ -4,6 +4,18 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { LogoFull } from "@/components/ui/Logo";
 
+const converterLinks = [
+  { label: "JPG Converter", href: "/jpg-converter" },
+  { label: "JPEG Converter", href: "/jpeg-converter" },
+  { label: "PNG Converter", href: "/png-converter" },
+  { label: "WebP Converter", href: "/webp-converter" },
+  { label: "AVIF Converter", href: "/avif-converter" },
+  { label: "GIF Converter", href: "/gif-converter" },
+  { label: "BMP Converter", href: "/bmp-converter" },
+  { label: "TIFF Converter", href: "/tiff-converter" },
+  { label: "ICO Converter", href: "/ico-converter" },
+];
+
 const toolLinks = [
   { label: "JPG to PNG", href: "/jpg-to-png" },
   { label: "PNG to WebP", href: "/png-to-webp" },
@@ -38,13 +50,13 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {/* All Tools Dropdown - click only */}
+          {/* Images Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button
               className="flex items-center gap-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer"
               onClick={() => setToolsOpen(!toolsOpen)}
             >
-              All Tools
+              Images
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-200 ${
                   toolsOpen ? "rotate-180" : ""
@@ -53,7 +65,7 @@ export function Header() {
             </button>
             {toolsOpen && (
               <div className="absolute top-full right-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                {toolLinks.map((link) => (
+                {converterLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -83,7 +95,20 @@ export function Header() {
         <div className="md:hidden bg-background border-t border-outline-variant max-h-[70vh] overflow-y-auto">
           <nav className="flex flex-col p-4 gap-1">
             <div className="px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
-              All Tools
+              Image Converters
+            </div>
+            {converterLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2 px-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-2 pt-2 border-t border-outline-variant px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
+              Popular Tools
             </div>
             {toolLinks.map((link) => (
               <a
