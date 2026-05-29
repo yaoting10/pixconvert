@@ -75,6 +75,7 @@ export default function ConverterPage() {
       <InfoSection />
       <WhyLocalSection />
       <FAQSection faqs={converterFaqs} title="TIFF Converter FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -149,6 +150,26 @@ function InfoSection() {
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Popular TIFF Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/tiff-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to JPG</a>
+        <a href="/tiff-to-jpeg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to JPEG</a>
+        <a href="/tiff-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to PNG</a>
+        <a href="/tiff-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to WebP</a>
+        <a href="/tiff-to-avif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to AVIF</a>
+        <a href="/tiff-to-gif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to GIF</a>
+        <a href="/tiff-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to BMP</a>
+        <a href="/tiff-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to ICO</a>
       </div>
     </section>
   );

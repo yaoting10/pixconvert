@@ -75,6 +75,7 @@ export default function ConverterPage() {
       <InfoSection />
       <WhyLocalSection />
       <FAQSection faqs={converterFaqs} title="AVIF Converter FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -149,6 +150,26 @@ function InfoSection() {
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Popular AVIF Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/avif-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to JPG</a>
+        <a href="/avif-to-jpeg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to JPEG</a>
+        <a href="/avif-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to PNG</a>
+        <a href="/avif-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to WebP</a>
+        <a href="/avif-to-gif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to GIF</a>
+        <a href="/avif-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to BMP</a>
+        <a href="/avif-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to TIFF</a>
+        <a href="/avif-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to ICO</a>
       </div>
     </section>
   );

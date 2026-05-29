@@ -75,6 +75,7 @@ export default function ConverterPage() {
       <InfoSection />
       <WhyLocalSection />
       <FAQSection faqs={converterFaqs} title="JPG Converter FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -149,6 +150,26 @@ function InfoSection() {
             </tbody>
           </table>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Popular JPG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/jpg-to-jpeg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to JPEG</a>
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+        <a href="/jpg-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to WebP</a>
+        <a href="/jpg-to-avif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to AVIF</a>
+        <a href="/jpg-to-gif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to GIF</a>
+        <a href="/jpg-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to BMP</a>
+        <a href="/jpg-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to TIFF</a>
+        <a href="/jpg-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to ICO</a>
       </div>
     </section>
   );
