@@ -16,6 +16,17 @@ const converterLinks = [
   { label: "ICO Converter", href: "/ico-converter" },
 ];
 
+const videoLinks = [
+  { label: "MP4 Converter", href: "/mp4-converter" },
+  { label: "WebM Converter", href: "/webm-converter" },
+  { label: "MOV Converter", href: "/mov-converter" },
+  { label: "AVI Converter", href: "/avi-converter" },
+  { label: "MKV Converter", href: "/mkv-converter" },
+  { label: "WMV Converter", href: "/wmv-converter" },
+  { label: "FLV Converter", href: "/flv-converter" },
+  { label: "GIF Converter", href: "/gif-converter" },
+];
+
 const toolLinks = [
   { label: "JPG to PNG", href: "/jpg-to-png" },
   { label: "PNG to WebP", href: "/png-to-webp" },
@@ -23,19 +34,25 @@ const toolLinks = [
   { label: "JPG to WebP", href: "/jpg-to-webp" },
   { label: "WebP to PNG", href: "/webp-to-png" },
   { label: "PNG to JPG", href: "/png-to-jpg" },
-  { label: "Batch Converter", href: "/batch-image-converter" },
+  { label: "Batch Image Converter", href: "/batch-image-converter" },
+  { label: "Batch Video Converter", href: "/batch-video-converter" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [toolsOpen, setToolsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [imagesOpen, setImagesOpen] = useState(false);
+  const [videosOpen, setVideosOpen] = useState(false);
+  const imagesRef = useRef<HTMLDivElement>(null);
+  const videosRef = useRef<HTMLDivElement>(null);
 
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setToolsOpen(false);
+      if (imagesRef.current && !imagesRef.current.contains(event.target as Node)) {
+        setImagesOpen(false);
+      }
+      if (videosRef.current && !videosRef.current.contains(event.target as Node)) {
+        setVideosOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -51,26 +68,61 @@ export function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           {/* Images Dropdown */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative" ref={imagesRef}>
             <button
               className="flex items-center gap-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer"
-              onClick={() => setToolsOpen(!toolsOpen)}
+              onClick={() => {
+                setImagesOpen(!imagesOpen);
+                setVideosOpen(false);
+              }}
             >
               Images
               <ChevronDown
                 className={`h-4 w-4 transition-transform duration-200 ${
-                  toolsOpen ? "rotate-180" : ""
+                  imagesOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
-            {toolsOpen && (
+            {imagesOpen && (
               <div className="absolute top-full right-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
                 {converterLinks.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer"
-                    onClick={() => setToolsOpen(false)}
+                    onClick={() => setImagesOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Videos Dropdown */}
+          <div className="relative" ref={videosRef}>
+            <button
+              className="flex items-center gap-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer"
+              onClick={() => {
+                setVideosOpen(!videosOpen);
+                setImagesOpen(false);
+              }}
+            >
+              Videos
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  videosOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            {videosOpen && (
+              <div className="absolute top-full right-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+                {videoLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer"
+                    onClick={() => setVideosOpen(false)}
                   >
                     {link.label}
                   </a>
@@ -98,6 +150,19 @@ export function Header() {
               Image Converters
             </div>
             {converterLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2 px-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-2 pt-2 border-t border-outline-variant px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
+              Video Converters
+            </div>
+            {videoLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}

@@ -6,6 +6,7 @@ export default function sitemap() {
 
   const pages = [
     { path: "", priority: 1.0, freq: "weekly" as const },
+    { path: "/avi-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/avif-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/avif-to-bmp", priority: 0.9, freq: "weekly" as const },
     { path: "/avif-to-gif", priority: 0.9, freq: "weekly" as const },
@@ -16,6 +17,7 @@ export default function sitemap() {
     { path: "/avif-to-tiff", priority: 0.9, freq: "weekly" as const },
     { path: "/avif-to-webp", priority: 0.9, freq: "weekly" as const },
     { path: "/batch-image-converter", priority: 0.8, freq: "weekly" as const },
+    { path: "/batch-video-converter", priority: 0.8, freq: "weekly" as const },
     { path: "/bmp-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/bmp-to-avif", priority: 0.9, freq: "weekly" as const },
     { path: "/bmp-to-gif", priority: 0.9, freq: "weekly" as const },
@@ -25,6 +27,7 @@ export default function sitemap() {
     { path: "/bmp-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/bmp-to-tiff", priority: 0.9, freq: "weekly" as const },
     { path: "/bmp-to-webp", priority: 0.9, freq: "weekly" as const },
+    { path: "/flv-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/gif-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/gif-to-avif", priority: 0.9, freq: "weekly" as const },
     { path: "/gif-to-bmp", priority: 0.9, freq: "weekly" as const },
@@ -61,6 +64,9 @@ export default function sitemap() {
     { path: "/jpg-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/jpg-to-tiff", priority: 0.9, freq: "weekly" as const },
     { path: "/jpg-to-webp", priority: 0.9, freq: "weekly" as const },
+    { path: "/mkv-converter", priority: 0.85, freq: "weekly" as const },
+    { path: "/mov-converter", priority: 0.85, freq: "weekly" as const },
+    { path: "/mp4-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/png-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/png-to-avif", priority: 0.9, freq: "weekly" as const },
     { path: "/png-to-bmp", priority: 0.9, freq: "weekly" as const },
@@ -81,6 +87,7 @@ export default function sitemap() {
     { path: "/tiff-to-jpg", priority: 0.9, freq: "weekly" as const },
     { path: "/tiff-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/tiff-to-webp", priority: 0.9, freq: "weekly" as const },
+    { path: "/webm-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/webp-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/webp-to-avif", priority: 0.9, freq: "weekly" as const },
     { path: "/webp-to-bmp", priority: 0.9, freq: "weekly" as const },
@@ -92,6 +99,7 @@ export default function sitemap() {
     { path: "/webp-to-tiff", priority: 0.9, freq: "weekly" as const },
     { path: "/webp-vs-png", priority: 0.7, freq: "monthly" as const },
     { path: "/what-is-webp", priority: 0.7, freq: "monthly" as const },
+    { path: "/wmv-converter", priority: 0.85, freq: "weekly" as const },
   ];
 
   return pages.map((page) => ({
