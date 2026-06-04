@@ -2,7 +2,7 @@ export const dynamic = "force-static";
 
 export default function sitemap() {
   const baseUrl = "https://pixconvert.org";
-  const lastModified = new Date("2025-06-03");
+  const lastModified = new Date("2026-06-03T08:30:00.000Z");
 
   const pages = [
     { path: "", priority: 1.0, freq: "weekly" as const },
