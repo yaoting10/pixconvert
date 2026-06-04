@@ -91,8 +91,9 @@ function getQualityArgs(format: VideoFormat, quality: string = "medium"): string
     return "-vf fps=10,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse";
   }
   if (format === "webm") {
+    // VP9 with libopus audio (WebM standard)
     const bitrate = quality === "high" ? "2M" : quality === "low" ? "500k" : "1M";
-    return `-c:v libvpx-vp9 -b:v ${bitrate} -deadline good -cpu-used 2`;
+    return `-c:v libvpx-vp9 -b:v ${bitrate} -deadline good -cpu-used 2 -c:a libopus -b:a 128k`;
   }
   return QUALITY_PRESETS[quality] || QUALITY_PRESETS.medium;
 }
