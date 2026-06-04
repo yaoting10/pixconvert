@@ -1,7 +1,7 @@
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
 
-export type VideoFormat = "mp4" | "webm" | "mov" | "avi" | "mkv" | "wmv" | "flv" | "gif";
+export type VideoFormat = "mp4" | "mov" | "avi" | "mkv" | "wmv" | "flv" | "gif";
 
 export interface VideoConversionOptions {
   outputFormat: VideoFormat;
@@ -20,7 +20,6 @@ export interface VideoConversionResult {
 
 const MIME_TYPES: Record<VideoFormat, string> = {
   mp4: "video/mp4",
-  webm: "video/webm",
   mov: "video/quicktime",
   avi: "video/x-msvideo",
   mkv: "video/x-matroska",
@@ -31,7 +30,6 @@ const MIME_TYPES: Record<VideoFormat, string> = {
 
 const EXTENSIONS: Record<VideoFormat, string> = {
   mp4: ".mp4",
-  webm: ".webm",
   mov: ".mov",
   avi: ".avi",
   mkv: ".mkv",
@@ -89,11 +87,6 @@ function getQualityArgs(format: VideoFormat, quality: string = "medium"): string
   if (format === "gif") {
     // GIF uses different settings
     return "-vf fps=10,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=128[p];[s1][p]paletteuse";
-  }
-  if (format === "webm") {
-    // VP9 with libopus audio (WebM standard)
-    const bitrate = quality === "high" ? "2M" : quality === "low" ? "500k" : "1M";
-    return `-c:v libvpx-vp9 -b:v ${bitrate} -deadline good -cpu-used 2 -c:a libopus -b:a 128k`;
   }
   return QUALITY_PRESETS[quality] || QUALITY_PRESETS.medium;
 }

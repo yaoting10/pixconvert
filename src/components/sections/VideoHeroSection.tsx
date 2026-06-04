@@ -11,7 +11,7 @@ import {
   type VideoConversionResult,
 } from "@/lib/videoConverter";
 
-const ALL_FORMATS: VideoFormat[] = ["mp4", "webm", "mov", "avi", "mkv", "wmv", "flv", "gif"];
+const ALL_FORMATS: VideoFormat[] = ["mp4", "mov", "avi", "mkv", "wmv", "flv", "gif"];
 
 interface VideoHeroSectionProps {
   title: string;

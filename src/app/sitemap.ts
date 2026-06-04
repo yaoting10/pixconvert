@@ -87,7 +87,6 @@ export default function sitemap() {
     { path: "/tiff-to-jpg", priority: 0.9, freq: "weekly" as const },
     { path: "/tiff-to-png", priority: 0.9, freq: "weekly" as const },
     { path: "/tiff-to-webp", priority: 0.9, freq: "weekly" as const },
-    { path: "/webm-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/webp-converter", priority: 0.85, freq: "weekly" as const },
     { path: "/webp-to-avif", priority: 0.9, freq: "weekly" as const },
     { path: "/webp-to-bmp", priority: 0.9, freq: "weekly" as const },

@@ -22,7 +22,6 @@ interface VideoFileListItemProps {
 
 const FORMAT_OPTIONS: { value: VideoFormat; label: string }[] = [
   { value: "mp4", label: "MP4" },
-  { value: "webm", label: "WebM" },
   { value: "mov", label: "MOV" },
   { value: "avi", label: "AVI" },
   { value: "mkv", label: "MKV" },
