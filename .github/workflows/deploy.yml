@@ -27,6 +27,12 @@ jobs:
         run: npm ci
 
       - name: Build
+        env:
+          NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${{ vars.NEXT_PUBLIC_PLAUSIBLE_DOMAIN }}
+          NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL: ${{ vars.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL }}
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID }}
+          NEXT_PUBLIC_AHREFS_ANALYTICS_ID: ${{ vars.NEXT_PUBLIC_AHREFS_ANALYTICS_ID }}
         run: npx opennextjs-cloudflare build
 
       - name: Deploy to Cloudflare
