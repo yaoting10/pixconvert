@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AnalyticsScripts } from "@/components/Analytics";
+import { JsonLd } from "@/components/JsonLd";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -72,6 +73,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://pixconvert.org",
+    languages: {
+      "en-US": "https://pixconvert.org",
+      "x-default": "https://pixconvert.org",
+    },
   },
   icons: {
     icon: [
@@ -81,6 +86,10 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "DMC-MPtcF83RxOReXjsnwR4Q4aGfGeySTyhSKnNd6",
+    yandex: "0152456a8b78b120",
+  },
 };
 
 export default function RootLayout({
@@ -91,6 +100,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col bg-background text-on-background">
+        <JsonLd />
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
