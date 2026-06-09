@@ -1,162 +1,171 @@
 import { LogoFull } from "@/components/ui/Logo";
 
+/* ─────────────── Footer link data ─────────────── */
+const popularConversions = [
+  { label: "JPG to PNG", href: "/jpg-to-png" },
+  { label: "PNG to JPG", href: "/png-to-jpg" },
+  { label: "JPG to WebP", href: "/jpg-to-webp" },
+  { label: "PNG to WebP", href: "/png-to-webp" },
+  { label: "WebP to PNG", href: "/webp-to-png" },
+  { label: "WebP to JPG", href: "/webp-to-jpg" },
+  { label: "PNG to ICO", href: "/png-to-ico" },
+  { label: "ICO to PNG", href: "/ico-to-png" },
+];
+
+const imageConverters = [
+  { label: "JPG Converter", href: "/jpg-converter" },
+  { label: "PNG Converter", href: "/png-converter" },
+  { label: "WebP Converter", href: "/webp-converter" },
+  { label: "GIF Converter", href: "/gif-converter" },
+  { label: "AVIF Converter", href: "/avif-converter" },
+  { label: "BMP Converter", href: "/bmp-converter" },
+  { label: "TIFF Converter", href: "/tiff-converter" },
+  { label: "ICO Converter", href: "/ico-converter" },
+];
+
+const videoConverters = [
+  { label: "MP4 Converter", href: "/mp4-converter" },
+  { label: "MOV Converter", href: "/mov-converter" },
+  { label: "AVI Converter", href: "/avi-converter" },
+  { label: "MKV Converter", href: "/mkv-converter" },
+  { label: "WMV Converter", href: "/wmv-converter" },
+  { label: "FLV Converter", href: "/flv-converter" },
+];
+
+const tools = [
+  { label: "Batch Image Converter", href: "/batch-image-converter" },
+  { label: "Batch Video Converter", href: "/batch-video-converter" },
+];
+
+const resources = [
+  { label: "What is WebP?", href: "/what-is-webp" },
+  { label: "WebP vs PNG", href: "/webp-vs-png" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+];
+
 export function Footer() {
   return (
     <footer className="bg-surface-container-low border-t border-outline-variant mt-auto w-full py-12">
-      <div className="mx-auto max-w-[1120px] px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="mx-auto max-w-[1120px] px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
         {/* Brand */}
-        <div>
+        <div className="sm:col-span-2 lg:col-span-2">
           <LogoFull className="mb-3" />
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            © 2026 PixConvert. All processing happens locally in your browser. Your files never leave your device.
+          <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
+            Free online image & video converter. All processing happens locally in your browser — your files never leave your device.
           </p>
         </div>
 
-        {/* Popular Converters */}
+        {/* Popular Conversions */}
         <div>
           <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
-            Popular Converters
+            Popular Conversions
           </h4>
           <ul className="space-y-2">
-            <li>
-              <a href="/jpg-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                JPG to PNG
-              </a>
-            </li>
-            <li>
-              <a href="/png-to-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                PNG to WebP
-              </a>
-            </li>
-            <li>
-              <a href="/ico-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                ICO to PNG
-              </a>
-            </li>
-            <li>
-              <a href="/jpg-to-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                JPG to WebP
-              </a>
-            </li>
-            <li>
-              <a href="/webp-to-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                WebP to PNG
-              </a>
-            </li>
-            <li>
-              <a href="/png-to-jpg" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                PNG to JPG
-              </a>
-            </li>
+            {popularConversions.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* All Format Converters */}
+        {/* Image Converters */}
         <div>
           <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
-            All Format Converters
+            Image Converters
           </h4>
           <ul className="space-y-2">
-            <li>
-              <a href="/jpg-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                JPG Converter
-              </a>
-            </li>
-            <li>
-              <a href="/jpeg-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                JPEG Converter
-              </a>
-            </li>
-            <li>
-              <a href="/png-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                PNG Converter
-              </a>
-            </li>
-            <li>
-              <a href="/webp-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                WebP Converter
-              </a>
-            </li>
-            <li>
-              <a href="/avif-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                AVIF Converter
-              </a>
-            </li>
-            <li>
-              <a href="/gif-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                GIF Converter
-              </a>
-            </li>
-            <li>
-              <a href="/bmp-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                BMP Converter
-              </a>
-            </li>
-            <li>
-              <a href="/tiff-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                TIFF Converter
-              </a>
-            </li>
-            <li>
-              <a href="/ico-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                ICO Converter
-              </a>
-            </li>
+            {imageConverters.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Resources */}
+        {/* Video Converters */}
+        <div>
+          <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
+            Video Converters
+          </h4>
+          <ul className="space-y-2">
+            {videoConverters.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Resources & Connect */}
         <div>
           <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
             Resources
           </h4>
           <ul className="space-y-2">
+            {tools.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            {resources.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
             <li>
-              <a href="/batch-image-converter" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                Batch Converter
-              </a>
-            </li>
-            <li>
-              <a href="/what-is-webp" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                What is WebP?
-              </a>
-            </li>
-            <li>
-              <a href="/webp-vs-png" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                WebP vs PNG
-              </a>
-            </li>
-            <li>
-              <a href="/privacy-policy" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="/terms-of-service" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Connect */}
-        <div>
-          <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
-            Connect
-          </h4>
-          <ul className="space-y-2">
-            <li>
-              <a href="https://github.com/yaoting10/pixconvert" target="_blank" rel="noopener noreferrer" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+              <a
+                href="https://github.com/yaoting10/pixconvert"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+              >
                 GitHub
               </a>
             </li>
             <li>
-              <a href="mailto:support@pixconvert.org" className="text-sm text-on-surface-variant hover:text-primary transition-colors">
+              <a
+                href="mailto:support@pixconvert.org"
+                className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+              >
                 Contact
               </a>
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="mx-auto max-w-[1120px] px-6 mt-10 pt-6 border-t border-outline-variant">
+        <p className="text-xs text-on-surface-variant text-center">
+          © 2026 PixConvert. All rights reserved.
+        </p>
       </div>
     </footer>
   );

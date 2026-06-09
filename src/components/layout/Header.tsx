@@ -4,19 +4,34 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { LogoFull } from "@/components/ui/Logo";
 
-const converterLinks = [
+/* ─────────────── Image Converters ─────────────── */
+const imageConverters = [
   { label: "JPG Converter", href: "/jpg-converter" },
-  { label: "JPEG Converter", href: "/jpeg-converter" },
   { label: "PNG Converter", href: "/png-converter" },
   { label: "WebP Converter", href: "/webp-converter" },
-  { label: "AVIF Converter", href: "/avif-converter" },
   { label: "GIF Converter", href: "/gif-converter" },
+  { label: "AVIF Converter", href: "/avif-converter" },
   { label: "BMP Converter", href: "/bmp-converter" },
   { label: "TIFF Converter", href: "/tiff-converter" },
   { label: "ICO Converter", href: "/ico-converter" },
 ];
 
-const videoLinks = [
+const imageTools = [
+  { label: "JPG to PNG", href: "/jpg-to-png" },
+  { label: "PNG to JPG", href: "/png-to-jpg" },
+  { label: "JPG to WebP", href: "/jpg-to-webp" },
+  { label: "PNG to WebP", href: "/png-to-webp" },
+  { label: "WebP to PNG", href: "/webp-to-png" },
+  { label: "WebP to JPG", href: "/webp-to-jpg" },
+  { label: "PNG to ICO", href: "/png-to-ico" },
+  { label: "ICO to PNG", href: "/ico-to-png" },
+  { label: "JPG to GIF", href: "/jpg-to-gif" },
+  { label: "PNG to GIF", href: "/png-to-gif" },
+  { label: "Batch Image Converter", href: "/batch-image-converter" },
+];
+
+/* ─────────────── Video Converters ─────────────── */
+const videoConverters = [
   { label: "MP4 Converter", href: "/mp4-converter" },
   { label: "MOV Converter", href: "/mov-converter" },
   { label: "AVI Converter", href: "/avi-converter" },
@@ -26,14 +41,7 @@ const videoLinks = [
   { label: "GIF Converter", href: "/gif-converter" },
 ];
 
-const toolLinks = [
-  { label: "JPG to PNG", href: "/jpg-to-png" },
-  { label: "PNG to WebP", href: "/png-to-webp" },
-  { label: "ICO to PNG", href: "/ico-to-png" },
-  { label: "JPG to WebP", href: "/jpg-to-webp" },
-  { label: "WebP to PNG", href: "/webp-to-png" },
-  { label: "PNG to JPG", href: "/png-to-jpg" },
-  { label: "Batch Image Converter", href: "/batch-image-converter" },
+const videoTools = [
   { label: "Batch Video Converter", href: "/batch-video-converter" },
 ];
 
@@ -66,7 +74,7 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
-          {/* Images Dropdown */}
+          {/* Images Mega Dropdown */}
           <div className="relative" ref={imagesRef}>
             <button
               className="flex items-center gap-1.5 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer"
@@ -83,17 +91,41 @@ export function Header() {
               />
             </button>
             {imagesOpen && (
-              <div className="absolute top-full right-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                {converterLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer"
-                    onClick={() => setImagesOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
+              <div className="absolute top-full right-0 mt-2 w-[480px] bg-background border border-border rounded-xl shadow-xl py-4 z-50">
+                <div className="grid grid-cols-2 gap-4 px-4">
+                  {/* Column 1: By Format */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-on-surface-variant uppercase tracking-wide mb-2 px-2">
+                      By Format
+                    </h4>
+                    {imageConverters.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="block px-2 py-1.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-md transition-colors cursor-pointer"
+                        onClick={() => setImagesOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                  {/* Column 2: Popular Tools */}
+                  <div>
+                    <h4 className="text-xs font-semibold text-on-surface-variant uppercase tracking-wide mb-2 px-2">
+                      Popular Conversions
+                    </h4>
+                    {imageTools.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        className="block px-2 py-1.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low rounded-md transition-colors cursor-pointer"
+                        onClick={() => setImagesOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -116,7 +148,18 @@ export function Header() {
             </button>
             {videosOpen && (
               <div className="absolute top-full right-0 mt-2 w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                {videoLinks.map((link) => (
+                {videoConverters.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors cursor-pointer"
+                    onClick={() => setVideosOpen(false)}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <div className="border-t border-outline-variant my-1 mx-3" />
+                {videoTools.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -146,9 +189,22 @@ export function Header() {
         <div className="md:hidden bg-background border-t border-outline-variant max-h-[70vh] overflow-y-auto">
           <nav className="flex flex-col p-4 gap-1">
             <div className="px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
-              Image Converters
+              Image Converters (By Format)
             </div>
-            {converterLinks.map((link) => (
+            {imageConverters.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2 px-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-2 pt-2 border-t border-outline-variant px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
+              Popular Image Conversions
+            </div>
+            {imageTools.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -161,7 +217,7 @@ export function Header() {
             <div className="mt-2 pt-2 border-t border-outline-variant px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
               Video Converters
             </div>
-            {videoLinks.map((link) => (
+            {videoConverters.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -171,10 +227,7 @@ export function Header() {
                 {link.label}
               </a>
             ))}
-            <div className="mt-2 pt-2 border-t border-outline-variant px-2 py-1.5 text-xs font-semibold text-on-surface-variant uppercase tracking-wide">
-              Popular Tools
-            </div>
-            {toolLinks.map((link) => (
+            {videoTools.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
