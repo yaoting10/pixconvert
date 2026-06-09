@@ -31,11 +31,6 @@ const softwareSchema = {
     price: "0",
     priceCurrency: "USD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    ratingCount: "1250",
-  },
   featureList: [
     "Local browser-based image conversion",
     "No file uploads required",
