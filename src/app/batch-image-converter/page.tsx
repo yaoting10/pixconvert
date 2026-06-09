@@ -29,6 +29,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Batch Image Converter – Convert Multiple Images Free | PixConvert",
+    description: "Convert multiple images at once. Batch convert JPG, PNG, WebP, AVIF, BMP, and GIF in your browser. No uploads, no limits. 100% private and free.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const batchFaqs: FAQItem[] = [

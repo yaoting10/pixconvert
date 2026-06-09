@@ -27,6 +27,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "MOV Converter – Free, Private & Instant | PixConvert",
+    description: "Convert videos to MOV instantly in your browser. No uploads, no waiting. Free batch conversion with adjustable quality. 100% private – your files never leave your device.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

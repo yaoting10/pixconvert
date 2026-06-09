@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "PNG to JPEG Converter – Free, Private & Instant | PixConvert",
+    description: "Convert PNG to JPEG instantly in your browser. No uploads, no waiting. Free batch conversion with adjustable quality. 100% private – your files never leave your device.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

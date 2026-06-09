@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "PNG Converter – Convert To/From PNG Free | PixConvert",
+    description: "Free online PNG converter. Convert images to PNG or from PNG to JPG, WebP, GIF, BMP and more. Supports transparency. 100% private browser-based conversion.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

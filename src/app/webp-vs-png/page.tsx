@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "article",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "WebP vs PNG – Which Image Format Should You Use? | PixConvert",
+    description: "Compare WebP vs PNG in detail: file sizes, quality, transparency, browser support, and use cases. Learn which format is right for your needs.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const webpVsPngFaqs: FAQItem[] = [

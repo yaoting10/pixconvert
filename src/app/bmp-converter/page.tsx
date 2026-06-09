@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "BMP Converter – Convert To/From BMP Free | PixConvert",
+    description: "Free online BMP converter. Convert images to BMP or from BMP to JPG, PNG, WebP and more. 100% private browser-based conversion with no uploads.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

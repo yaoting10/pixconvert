@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "ICO Converter – Convert To/From ICO Free | PixConvert",
+    description: "Free online ICO converter. Convert images to ICO or from ICO to PNG, JPG, WebP and more. Perfect for favicons. 100% private browser-based conversion.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

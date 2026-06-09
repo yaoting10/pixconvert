@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "WebP Converter – Convert To/From WebP Free | PixConvert",
+    description: "Free online WebP converter. Convert images to WebP or from WebP to JPG, PNG, GIF and more. 30% smaller files. 100% private browser-based conversion.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

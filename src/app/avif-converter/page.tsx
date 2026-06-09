@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AVIF Converter – Convert To/From AVIF Free | PixConvert",
+    description: "Free online AVIF converter. Convert images to AVIF or from AVIF to JPG, PNG, WebP and more. 50% smaller than JPG. 100% private browser-based conversion.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [

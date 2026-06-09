@@ -29,6 +29,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "article",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "What is WebP? – Complete Guide to the Modern Image Format | PixConvert",
+    description: "WebP is Google's modern image format that produces files 25-35% smaller than JPG and PNG. Learn how WebP works, browser support, and how to use it.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const webpGuideFaqs: FAQItem[] = [

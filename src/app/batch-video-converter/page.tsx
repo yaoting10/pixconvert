@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Batch Video Converter – Convert Multiple Videos Free | PixConvert",
+    description: "Convert multiple videos at once. Batch convert MP4, WebM, MOV, AVI, MKV, WMV, and FLV in your browser. No uploads, no limits. 100% private and free.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const batchFaqs: FAQItem[] = [

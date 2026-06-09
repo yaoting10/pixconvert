@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     siteName: "PixConvert",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "TIFF Converter – Convert To/From TIFF Free | PixConvert",
+    description: "Free online TIFF converter. Convert images to TIFF or from TIFF to JPG, PNG, WebP and more. Professional quality. 100% private browser-based conversion.",
+    images: ["https://pixconvert.org/og-image.png"],
+  },
 };
 
 const converterFaqs: FAQItem[] = [
