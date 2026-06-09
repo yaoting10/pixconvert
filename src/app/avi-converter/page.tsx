@@ -49,12 +49,12 @@ const converterFaqs: FAQItem[] = [
   {
     question: "Is this converter really free?",
     answer:
-      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers.",
+      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers. Convert AVI to other formats as many times as you need without any restrictions.",
   },
   {
     question: "Are my files uploaded to a server?",
     answer:
-      "No. All conversion happens locally in your browser using FFmpeg.wasm. Your files never leave your device.",
+      "No. All AVI to other formats conversion happens locally in your browser using WebAssembly. Your AVI files never leave your device.",
   },
   {
     question: "Can I convert multiple files at once?",
@@ -64,7 +64,7 @@ const converterFaqs: FAQItem[] = [
   {
     question: "What browsers are supported?",
     answer:
-      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge.",
+      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge. AVI to other formats conversion runs directly in your browser with no installation needed.",
   },
 ];
 
@@ -92,22 +92,16 @@ function InfoSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
+          <h3 className="font-semibold text-on-background mb-2">AVI Overview</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Learn about AVI format characteristics and best use cases for your image conversion needs.</p>
+        </div>
+        <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
+          <h3 className="font-semibold text-on-background mb-2">Flexible Conversion</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Convert AVI to any modern format with adjustable quality settings and batch processing support.</p>
+        </div>
+        <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">100% Private</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            All processing happens locally in your browser. Your video files are never uploaded to any server, ensuring complete privacy.
-          </p>
-        </div>
-        <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Batch Conversion</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Convert multiple video files to AVI in one go. Simply drag and drop your videos and download the results.
-          </p>
-        </div>
-        <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Adjustable Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Use the quality presets to find the perfect balance between file size and video quality for your AVI output.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">All AVI conversion happens locally in your browser. Your files are never uploaded to any server.</p>
         </div>
       </div>
     </section>

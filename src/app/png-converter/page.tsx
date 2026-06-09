@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to high-quality PNG files with transparency support, or convert existing PNGs to JPG, WebP, GIF and more. All processing happens locally."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert PNG Locally?" />
       <FAQSection faqs={converterFaqs} title="PNG Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Transparency Support</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            PNG supports full alpha channel transparency, making it essential for logos, icons, overlays, and any image that needs to blend with different backgrounds.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">PNG supports alpha channel transparency, making it the go-to format for logos, icons, and images that need to blend seamlessly with different backgrounds.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Lossless Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            PNG uses lossless compression, preserving every pixel. Perfect for graphics, screenshots, text-heavy images, and any content where quality matters.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">PNG uses lossless compression, preserving every pixel of your original image. Perfect for graphics, screenshots, and images where quality is paramount.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Web Standard</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            PNG is universally supported by all browsers and platforms. It's the go-to format for web graphics, UI elements, and digital design assets.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">PNG is supported by all modern browsers and is the standard format for web graphics that require transparency or lossless quality.</p>
         </div>
       </div>
 

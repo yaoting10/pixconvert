@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to high-quality JPG files, or convert existing JPGs to PNG, WebP, GIF and more. All processing happens locally in your browser."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert JPG Locally?" />
       <FAQSection faqs={converterFaqs} title="JPG Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Universal Compatibility</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            JPG is the most widely supported image format. Converting to JPG ensures your images work on every device, browser, and platform without issues.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">JPG is the most widely used image format on the web, supported by every browser, device, and image editor. Perfect for photos and complex images.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Smaller File Sizes</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            JPG uses lossy compression to produce smaller files perfect for web, email, and storage. Ideal for photographs and complex images.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">JPG uses lossy compression to dramatically reduce file sizes while maintaining acceptable visual quality, making it ideal for web use and sharing.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Easy Sharing</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            JPG files are universally accepted by social media, email, messaging apps, and websites. No compatibility headaches.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">JPG files are universally recognized and can be opened on any device without special software, making sharing effortless across all platforms.</p>
         </div>
       </div>
 

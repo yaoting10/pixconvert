@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to cutting-edge AVIF format for dramatically smaller files, or convert AVIF to JPG, PNG, WebP and more. All processing happens locally."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert AVIF Locally?" />
       <FAQSection faqs={converterFaqs} title="AVIF Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Superior Compression</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            AVIF produces files up to 50% smaller than JPG while maintaining the same visual quality. The most efficient image format available today.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">AVIF offers 50% smaller file sizes compared to JPG while maintaining the same visual quality, making it the most efficient image format for the web.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Next-Gen Format</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            AVIF is based on AV1 video codec and represents the future of image compression. Major platforms like Netflix and YouTube already use it.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">AVIF is based on the AV1 video codec and represents the future of image compression, supported by Chrome, Firefox, and Safari.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">HDR Support</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            AVIF supports High Dynamic Range (HDR) and wide color gamut, making it ideal for professional photography and high-quality web images.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">AVIF supports High Dynamic Range (HDR) and wide color gamut, making it ideal for professional photography and high-quality visual content.</p>
         </div>
       </div>
 

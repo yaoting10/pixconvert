@@ -49,12 +49,12 @@ const converterFaqs: FAQItem[] = [
   {
     question: "Is this converter really free?",
     answer:
-      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers.",
+      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers. Convert GIF to other formats as many times as you need without any restrictions.",
   },
   {
     question: "Are my files uploaded to a server?",
     answer:
-      "No. All conversion happens locally in your browser using FFmpeg.wasm. Your files never leave your device.",
+      "No. All GIF to other formats conversion happens locally in your browser using WebAssembly. Your GIF files never leave your device.",
   },
   {
     question: "Can I convert multiple files at once?",
@@ -64,7 +64,7 @@ const converterFaqs: FAQItem[] = [
   {
     question: "What browsers are supported?",
     answer:
-      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge.",
+      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge. GIF to other formats conversion runs directly in your browser with no installation needed.",
   },
 ];
 
@@ -92,22 +92,16 @@ function InfoSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">100% Private</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            All processing happens locally in your browser. Your video files are never uploaded to any server, ensuring complete privacy.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">Animation Support</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">GIF is the most widely supported format for simple animations and short looping clips that work everywhere without plugins or special players.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Batch Conversion</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Convert multiple video files to GIF in one go. Simply drag and drop your videos and download the results.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">Universal Compatibility</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">GIF files are supported by virtually every platform and device since the 1990s, ensuring your animated content reaches the widest possible audience.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Adjustable Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Use the quality presets to find the perfect balance between file size and video quality for your GIF output.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">Simple & Reliable</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">GIF uses a simple, well-established format that just works everywhere, making it perfect for memes, reactions, and basic animated content.</p>
         </div>
       </div>
     </section>

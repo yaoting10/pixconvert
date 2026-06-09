@@ -50,12 +50,12 @@ const converterFaqs: FAQItem[] = [
   {
     question: "Is this converter really free?",
     answer:
-      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers.",
+      "Yes. PixConvert is 100% free with no hidden costs, watermarks, or premium tiers. Convert AVIF to BMP as many times as you need without any restrictions.",
   },
   {
     question: "Are my files uploaded to a server?",
     answer:
-      "No. All conversion happens locally in your browser using WebAssembly. Your files never leave your device.",
+      "No. All AVIF to BMP conversion happens locally in your browser using WebAssembly. Your AVIF files never leave your device.",
   },
   {
     question: "Can I convert multiple files at once?",
@@ -65,7 +65,7 @@ const converterFaqs: FAQItem[] = [
   {
     question: "What browsers are supported?",
     answer:
-      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge.",
+      "PixConvert works in all modern browsers including Chrome, Firefox, Safari, and Edge. AVIF to BMP conversion runs directly in your browser with no installation needed.",
   },
 ];
 
@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your AVIF files and convert them to BMP format right in your browser — no server uploads ever."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert AVIF to BMP Locally?" />
       <FAQSection faqs={converterFaqs} title="AVIF to BMP FAQ" />
       <FooterCTASection />
     </>
@@ -94,22 +94,16 @@ function InfoSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">100% Private</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            All processing happens locally in your browser. Your AVIF files are never uploaded to any server, ensuring complete privacy.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">AVIF to BMP Made Simple</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Convert your AVIF images to BMP format directly in your browser. No uploads, no waiting—just instant, private conversion with full quality control.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Batch Conversion</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Convert multiple AVIF files to BMP in one go. Simply drag and drop your images and download the results.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">Why Choose BMP?</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">BMP offers uncompressed quality, making it ideal for windows. Transform your AVIF files to take advantage of BMP's unique benefits.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
-          <h3 className="font-semibold text-on-background mb-2">Adjustable Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            Use the quality slider to find the perfect balance between file size and image quality for your BMP output.
-          </p>
+          <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Your AVIF files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
       </div>
     </section>

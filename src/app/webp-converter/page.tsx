@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to modern WebP format for 25-35% smaller files, or convert WebP to JPG, PNG, GIF and more. All processing happens locally."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert WEBP Locally?" />
       <FAQSection faqs={converterFaqs} title="WebP Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Smaller File Sizes</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            WebP produces files 25-35% smaller than JPG and PNG while maintaining the same visual quality. Faster page loads and lower bandwidth usage.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">WebP typically produces files 25-35% smaller than JPG and PNG while maintaining the same visual quality, significantly improving web page load times.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Modern Web Standard</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            WebP is supported by all modern browsers and is recommended by Google for web performance. It's the future of web image optimization.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Developed by Google, WebP is now supported by all major browsers and is the recommended format for modern web performance optimization.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Lossy + Lossless</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            WebP supports both lossy and lossless compression, plus transparency and animation. One format that can replace both JPG and PNG.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">WebP supports both lossy and lossless compression, as well as transparency and animation, making it a versatile replacement for JPG, PNG, and GIF.</p>
         </div>
       </div>
 

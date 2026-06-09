@@ -14,11 +14,15 @@ const localItems = [
   "Immediate save to disk",
 ];
 
-export function WhyLocalSection() {
+interface WhyLocalSectionProps {
+  heading?: string;
+}
+
+export function WhyLocalSection({ heading = "Why Local Processing?" }: WhyLocalSectionProps) {
   return (
     <section className="py-20 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
       <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-10 text-center">
-        Why Local Processing?
+        {heading}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
         {/* Server Upload */}

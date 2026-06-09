@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to ICO format for favicons and Windows icons, or convert ICO files to PNG, JPG, WebP and more. All processing happens locally."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert ICO Locally?" />
       <FAQSection faqs={converterFaqs} title="ICO Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Favicon Creation</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            ICO is the standard format for website favicons. Convert your logo or image to ICO to create professional favicons that work across all browsers.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">ICO is the standard format for website favicons and application icons, supporting multiple sizes within a single file for optimal display across devices.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Windows Icons</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            ICO is the native Windows icon format. Use it for application icons, folder icons, and shortcut icons on Windows systems.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">ICO files are used for Windows application icons and shortcuts, supporting transparency and multiple resolution variants for crisp display at any size.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Convert to Modern Formats</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            ICO has limited support outside Windows. Converting ICO to PNG gives you universal compatibility for web and design use.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Convert ICO files to PNG or WebP for modern web use, or create ICO files from PNG images for traditional Windows application icons.</p>
         </div>
       </div>
 

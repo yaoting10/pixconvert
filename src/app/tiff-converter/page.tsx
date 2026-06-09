@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to high-quality TIFF format, or convert TIFF files to JPG, PNG, WebP and more. All processing happens locally in your browser."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert TIFF Locally?" />
       <FAQSection faqs={converterFaqs} title="TIFF Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Professional Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            TIFF supports high bit depths, multiple color spaces, and layers. It's the preferred format for professional photography, printing, and archival purposes.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">TIFF is the industry standard for professional photography and print production, supporting high bit depths, multiple layers, and lossless compression.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Lossless Options</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            TIFF can be saved with lossless compression (LZW, ZIP) or uncompressed. This makes it ideal for preserving image quality through multiple editing rounds.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">TIFF supports various compression methods including LZW and ZIP, or can be saved completely uncompressed for maximum quality preservation.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Print Ready</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            TIFF is the industry standard for professional printing. Converting to TIFF ensures your images are ready for high-quality print production.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">TIFF files are the preferred format for professional printing, supporting CMYK color mode and high resolutions required for quality print output.</p>
         </div>
       </div>
 

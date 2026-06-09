@@ -75,7 +75,7 @@ export default function BatchConverterPage() {
     <>
       <BatchHero />
       <BatchFeatures />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert BATCH-IMAGE Locally?" />
       <FAQSection faqs={batchFaqs} title="Batch Conversion FAQ" />
       <FooterCTASection />
     </>

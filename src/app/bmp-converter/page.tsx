@@ -79,7 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to BMP format, or convert BMP files to JPG, PNG, WebP and more. All processing happens locally in your browser."
       />
       <InfoSection />
-      <WhyLocalSection />
+      <WhyLocalSection heading="Why Convert BMP Locally?" />
       <FAQSection faqs={converterFaqs} title="BMP Converter FAQ" />
       <RelatedConversions />
       <FooterCTASection />
@@ -96,21 +96,15 @@ function InfoSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Uncompressed Quality</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            BMP stores images without compression, preserving every pixel. Useful for specific applications that require raw bitmap data without any quality loss.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">BMP stores images without compression, preserving every pixel in its original form. Ideal for applications where image fidelity is more important than file size.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Windows Native</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            BMP is the native Windows bitmap format. Some Windows applications and legacy systems specifically require BMP files for compatibility.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">BMP is the native bitmap format for Windows operating systems and is widely supported by Windows applications, game engines, and embedded systems.</p>
         </div>
         <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
           <h3 className="font-semibold text-on-background mb-2">Convert to Modern Formats</h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            BMP files are typically very large. Converting to JPG, PNG, or WebP dramatically reduces file size while maintaining visual quality.
-          </p>
+          <p className="text-sm text-on-surface-variant leading-relaxed">Use our converter to transform BMP files into modern compressed formats like PNG, WebP, or AVIF while maintaining visual quality at a fraction of the size.</p>
         </div>
       </div>
 
