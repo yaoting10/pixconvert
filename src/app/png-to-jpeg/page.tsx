@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your PNG files and convert them to JPEG format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert PNG to JPEG Locally?" />
       <FAQSection faqs={converterFaqs} title="PNG to JPEG FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,36 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your PNG files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related PNG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/png-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to JPG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/jpeg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPEG to PNG</a>
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding PNG to JPEG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PNG is the standard format for graphics requiring transparency, lossless quality, or crisp text. It supports millions of colors plus full alpha channel transparency, making it ideal for logos, icons, screenshots, and UI elements.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Converting PNG to JPEG is a common need for photographers, designers, web developers, and anyone working with digital images. JPEG format ensures maximum compatibility across all devices, browsers, and applications while keeping file sizes manageable for photos and complex images.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert makes PNG to JPEG conversion incredibly simple. Our browser-based tool processes your files locally using WebAssembly technology, which means your images never leave your device. There's no need to upload sensitive photos to external servers or wait in processing queues.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Simply drag and drop your PNG files into the converter, select JPEG as the output format, and download your converted images within seconds. You can process a single file or convert hundreds of images in one batch. PixConvert is completely free to use with no watermarks, no registration, and no limits.</p>
       </div>
     </section>
   );

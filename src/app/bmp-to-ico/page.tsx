@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your BMP files and convert them to ICO format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert BMP to ICO Locally?" />
       <FAQSection faqs={converterFaqs} title="BMP to ICO FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,36 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your BMP files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related BMP Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/bmp-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">BMP to PNG</a>
+        <a href="/png-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to ICO</a>
+        <a href="/ico-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">ICO to BMP</a>
+        <a href="/ico-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">ICO to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding BMP to ICO Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">BMP is an uncompressed format that preserves perfect image quality but produces very large files. It's primarily used in legacy systems and situations where uncompressed pixel data is required.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Converting BMP to ICO is a common need for photographers, designers, web developers, and anyone working with digital images. ICO format is specifically designed for favicons and application icons, supporting multiple resolutions in a single file.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert makes BMP to ICO conversion incredibly simple. Our browser-based tool processes your files locally using WebAssembly technology, which means your images never leave your device. There's no need to upload sensitive photos to external servers or wait in processing queues.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Simply drag and drop your BMP files into the converter, select ICO as the output format, and download your converted images within seconds. You can process a single file or convert hundreds of images in one batch. PixConvert is completely free to use with no watermarks, no registration, and no limits.</p>
       </div>
     </section>
   );

@@ -79,6 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to high-quality PNG files with transparency support, or convert existing PNGs to JPG, WebP, GIF and more. All processing happens locally."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert PNG Locally?" />
       <FAQSection faqs={converterFaqs} title="PNG Converter FAQ" />
       <RelatedConversions />
@@ -170,6 +171,20 @@ function RelatedConversions() {
         <a href="/png-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to BMP</a>
         <a href="/png-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to TIFF</a>
         <a href="/png-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to ICO</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About PNG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PNG is the go-to format for graphics that require transparency, lossless quality, or crisp text. Our PNG converter supports conversion between PNG and all major image formats including JPG, WebP, AVIF, GIF, BMP, TIFF, and ICO.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Use our PNG converter when you need to reduce file sizes for web use (PNG to WebP), ensure universal compatibility (PNG to JPG), create icons (PNG to ICO), or archive professional images (PNG to TIFF). Every conversion happens locally in your browser for maximum privacy.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert's PNG converter is free, fast, and requires no registration. Upload your PNG files, choose your output format, and download converted images instantly. Batch conversion is supported for processing multiple files at once.</p>
       </div>
     </section>
   );

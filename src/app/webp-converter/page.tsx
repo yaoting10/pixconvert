@@ -79,6 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to modern WebP format for 25-35% smaller files, or convert WebP to JPG, PNG, GIF and more. All processing happens locally."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert WEBP Locally?" />
       <FAQSection faqs={converterFaqs} title="WebP Converter FAQ" />
       <RelatedConversions />
@@ -170,6 +171,20 @@ function RelatedConversions() {
         <a href="/webp-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to BMP</a>
         <a href="/webp-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to TIFF</a>
         <a href="/webp-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to ICO</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About WEBP Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">WebP is Google's modern image format that combines the best features of JPG and PNG. Our WebP converter lets you convert WebP images to any format you need, or convert other formats into the efficient WebP format.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">WebP typically produces files 25-35% smaller than JPG or PNG while maintaining equivalent quality. This makes it ideal for websites, apps, and any situation where fast loading matters. However, older systems may still require traditional formats.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert processes all WebP conversions locally in your browser. No uploads, no waiting, no privacy concerns. Convert single images or entire batches for free, with no watermarks or registration required.</p>
       </div>
     </section>
   );

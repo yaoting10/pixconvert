@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your JPG files and convert them to AVIF format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert JPG to AVIF Locally?" />
       <FAQSection faqs={converterFaqs} title="JPG to AVIF FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your JPG files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related JPG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+        <a href="/jpg-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to WebP</a>
+        <a href="/avif-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to JPG</a>
+        <a href="/avif-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding JPG to AVIF Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">AVIF outperforms JPG in compression efficiency while maintaining better visual quality. Converting JPG to AVIF can reduce file sizes by 30-50%, making it an excellent choice for photographers, web developers, and anyone who wants faster-loading images.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Unlike JPG, AVIF supports HDR (High Dynamic Range), wide color gamuts, and better handling of text and sharp edges. This makes AVIF particularly valuable for modern displays and high-quality image delivery.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Use PixConvert to convert JPG to AVIF directly in your browser. Our local WebAssembly processing ensures your photos never leave your device. Batch convert entire albums or process single images — all free, with no watermarks.</p>
       </div>
     </section>
   );

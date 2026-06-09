@@ -79,6 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to high-quality JPG files, or convert existing JPGs to PNG, WebP, GIF and more. All processing happens locally in your browser."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert JPG Locally?" />
       <FAQSection faqs={converterFaqs} title="JPG Converter FAQ" />
       <RelatedConversions />
@@ -170,6 +171,20 @@ function RelatedConversions() {
         <a href="/jpg-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to BMP</a>
         <a href="/jpg-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to TIFF</a>
         <a href="/jpg-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to ICO</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About JPG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">JPG (or JPEG) is the world's most popular image format for photographs and web graphics. Our free JPG converter lets you transform JPG images to any other format you need — PNG for transparency, WebP for smaller web files, AVIF for cutting-edge compression, and more.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Whether you're optimizing images for a website, preparing files for print, or converting between formats for compatibility, PixConvert handles it all. Our browser-based converter processes files locally on your device, ensuring complete privacy and fast results.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Upload one JPG or hundreds. Adjust quality settings. Convert to multiple formats. All without registration, watermarks, or fees. PixConvert is the simplest way to convert JPG images online.</p>
       </div>
     </section>
   );

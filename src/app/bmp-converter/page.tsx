@@ -79,6 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to BMP format, or convert BMP files to JPG, PNG, WebP and more. All processing happens locally in your browser."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert BMP Locally?" />
       <FAQSection faqs={converterFaqs} title="BMP Converter FAQ" />
       <RelatedConversions />
@@ -170,6 +171,21 @@ function RelatedConversions() {
         <a href="/bmp-to-gif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">BMP to GIF</a>
         <a href="/bmp-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">BMP to TIFF</a>
         <a href="/bmp-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">BMP to ICO</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About BMP Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">BMP is an uncompressed format that preserves perfect image quality but produces very large files. It's primarily used in legacy systems and situations where uncompressed pixel data is required.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Our free BMP converter lets you transform BMP images to any other format you need. Whether you're optimizing for the web, ensuring compatibility with older software, or preparing images for print, PixConvert has you covered.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Every conversion happens locally in your browser using WebAssembly processing. This means your files stay on your device throughout the entire process, ensuring complete privacy and security. There's no upload queue, no server processing time, and no risk of your images being stored on third-party servers.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Upload one BMP file or process hundreds in a single batch. Choose from all major output formats including JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and ICO. Adjust quality settings, preview results, and download your converted files instantly — all for free.</p>
       </div>
     </section>
   );

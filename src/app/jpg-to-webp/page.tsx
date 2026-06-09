@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your JPG files and convert them to WebP format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert JPG to WEBP Locally?" />
       <FAQSection faqs={converterFaqs} title="JPG to WebP FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your JPG files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related JPG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+        <a href="/jpg-to-avif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to AVIF</a>
+        <a href="/webp-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to JPG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding JPG to WEBP Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">WebP is Google's modern image format that provides superior compression compared to both JPG and PNG. When you convert JPG to WebP, you can achieve 25-35% smaller file sizes without losing visible quality, making it perfect for websites and apps where performance matters.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Unlike JPG, WebP supports both lossy and lossless compression, plus transparency and animation. This means a single WebP file can replace both your JPG photos and your PNG graphics, simplifying your asset pipeline while improving load times.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert makes JPG to WebP conversion effortless. Upload your JPG files directly in the browser, choose WebP as the output format, and get smaller, faster images in seconds. All processing happens locally — no server uploads, no waiting, and no privacy concerns.</p>
       </div>
     </section>
   );

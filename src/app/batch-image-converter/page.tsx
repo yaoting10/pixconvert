@@ -77,6 +77,7 @@ export default function BatchConverterPage() {
       <BatchFeatures />
       <WhyLocalSection heading="Why Convert BATCH-IMAGE Locally?" />
       <FAQSection faqs={batchFaqs} title="Batch Conversion FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -143,6 +144,35 @@ function BatchFeatures() {
             Set a default quality level for all conversions, then fine-tune individual files as needed. Perfect balance between speed and control.
           </p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Popular Batch Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/webp-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to PNG</a>
+        <a href="/avif-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About BATCH-IMAGE Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Processing images one by one is tedious and time-consuming. PixConvert's batch image converter lets you convert multiple images simultaneously, saving hours of manual work. Upload dozens or even hundreds of images and convert them all in one go.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Our batch converter supports all major image formats including JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and ICO. Mix different input formats in a single batch, choose your output format, and download all converted files at once.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Like all PixConvert tools, the batch converter processes files locally in your browser. Your images never leave your device, making it safe for personal photos, work files, and sensitive graphics. Best of all, it's completely free with no limits.</p>
       </div>
     </section>
   );

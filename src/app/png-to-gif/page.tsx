@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your PNG files and convert them to GIF format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert PNG to GIF Locally?" />
       <FAQSection faqs={converterFaqs} title="PNG to GIF FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your PNG files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related PNG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/png-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to JPG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/gif-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">GIF to PNG</a>
+        <a href="/jpg-to-gif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to GIF</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding PNG to GIF Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Despite its age, GIF remains popular for simple animations and situations where broad compatibility is essential. Converting PNG to GIF is useful when you need images for older systems, specific social media features, or platforms that specifically require GIF format.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Keep in mind that GIF supports only 256 colors, so complex PNG images with gradients or many colors may lose some quality. For best results, use PNG to GIF conversion for simple graphics, logos, and icons with limited colors.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert handles PNG to GIF conversion locally in your browser. No uploads, no waiting, and no privacy concerns. Process single files or convert entire batches of PNG images to GIF format for free.</p>
       </div>
     </section>
   );

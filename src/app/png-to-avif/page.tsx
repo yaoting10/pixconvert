@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your PNG files and convert them to AVIF format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert PNG to AVIF Locally?" />
       <FAQSection faqs={converterFaqs} title="PNG to AVIF FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your PNG files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related PNG Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/png-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to JPG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/avif-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to PNG</a>
+        <a href="/jpg-to-avif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to AVIF</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding PNG to AVIF Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">AVIF represents the next generation of image compression, offering file sizes 30-50% smaller than JPG while maintaining better quality. Converting PNG to AVIF is an excellent way to optimize website graphics, app assets, and any images where file size matters.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">While PNG offers lossless quality and transparency, AVIF provides similar features with dramatically better compression. For web developers and designers looking to improve page speed scores, AVIF is becoming an essential format.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert makes PNG to AVIF conversion simple and private. All processing happens locally in your browser — no file uploads, no server queues, no privacy risks. Upload your PNG files and get smaller, modern AVIF images ready for the web.</p>
       </div>
     </section>
   );

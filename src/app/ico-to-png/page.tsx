@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your ICO files and convert them to PNG format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert ICO to PNG Locally?" />
       <FAQSection faqs={converterFaqs} title="ICO to PNG FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your ICO files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related ICO Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/ico-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">ICO to JPG</a>
+        <a href="/ico-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">ICO to WebP</a>
+        <a href="/png-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to ICO</a>
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding ICO to PNG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">ICO files are used for website favicons and Windows application icons. Converting ICO to PNG is useful when you need to use icon images in web design, graphic design projects, or applications that don't support the ICO format.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PNG offers better compression than ICO and supports transparency, making it ideal for modern web and app development. Many ICO files actually contain multiple sizes of the same image, and PNG conversion gives you a clean, single-resolution image.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert converts ICO to PNG directly in your browser. No software installation, no file uploads, and complete privacy. Extract your icon images and use them as transparent PNGs in any project.</p>
       </div>
     </section>
   );

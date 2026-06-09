@@ -77,6 +77,7 @@ export default function WhatIsWebpPage() {
       <WhatIsWebpContent />
       <WhyLocalSection />
       <FAQSection faqs={webpGuideFaqs} title="WebP FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -301,5 +302,20 @@ function BrowserSupportItem({
         )}
       </div>
     </div>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/webp-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to PNG</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/webp-vs-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP vs PNG</a>
+        <a href="/jpg-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to WebP</a>
+      </div>
+    </section>
   );
 }

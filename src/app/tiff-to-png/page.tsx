@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your TIFF files and convert them to PNG format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert TIFF to PNG Locally?" />
       <FAQSection faqs={converterFaqs} title="TIFF to PNG FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your TIFF files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related TIFF Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/tiff-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to JPG</a>
+        <a href="/tiff-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">TIFF to WebP</a>
+        <a href="/png-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to TIFF</a>
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding TIFF to PNG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">TIFF is a professional image format commonly used in photography, publishing, and medical imaging. While TIFF offers excellent quality and supports layers, its large file sizes and limited web compatibility make PNG a better choice for most sharing and web use cases.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Converting TIFF to PNG preserves image quality while dramatically reducing file size. PNG's universal browser support makes it perfect for sharing professional images online, adding to websites, or using in applications that don't support TIFF.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert processes TIFF to PNG conversions locally in your browser. Your professional images stay on your device throughout the conversion process, ensuring confidentiality and security. Convert single files or entire batches for free.</p>
       </div>
     </section>
   );

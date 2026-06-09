@@ -79,6 +79,7 @@ export default function ConverterPage() {
         description="Upload your images and convert them to cutting-edge AVIF format for dramatically smaller files, or convert AVIF to JPG, PNG, WebP and more. All processing happens locally."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert AVIF Locally?" />
       <FAQSection faqs={converterFaqs} title="AVIF Converter FAQ" />
       <RelatedConversions />
@@ -170,6 +171,20 @@ function RelatedConversions() {
         <a href="/avif-to-bmp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to BMP</a>
         <a href="/avif-to-tiff" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to TIFF</a>
         <a href="/avif-to-ico" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVIF to ICO</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About AVIF Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">AVIF is the newest image format, offering compression efficiency that surpasses even WebP. Our AVIF converter helps you take advantage of this cutting-edge format while maintaining compatibility with older systems through conversion to JPG, PNG, WebP, and more.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">AVIF is particularly valuable for web developers looking to improve Core Web Vitals scores and reduce bandwidth usage. However, because AVIF support isn't universal yet, you'll often need to convert AVIF files to more compatible formats.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert's AVIF converter runs entirely in your browser using WebAssembly. Your images stay on your device throughout the conversion process, ensuring complete privacy and security.</p>
       </div>
     </section>
   );

@@ -78,7 +78,9 @@ export default function ConverterPage() {
         description="Upload your video files and convert them to MOV format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <FAQSection faqs={converterFaqs} title="MOV Converter FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -103,6 +105,37 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">100% Private</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">All MOV conversion happens locally in your browser. Your files are never uploaded to any server.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Popular Video Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/mp4-converter" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">MP4 Converter</a>
+        <a href="/avi-converter" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">AVI Converter</a>
+        <a href="/mkv-converter" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">MKV Converter</a>
+        <a href="/wmv-converter" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WMV Converter</a>
+        <a href="/batch-video-converter" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">Batch Video Converter</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        About MOV Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">MOV is a widely used image format.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Our free MOV converter lets you transform MOV images to any other format you need. Whether you're optimizing for the web, ensuring compatibility with older software, or preparing images for print, PixConvert has you covered.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Every conversion happens locally in your browser using WebAssembly processing. This means your files stay on your device throughout the entire process, ensuring complete privacy and security. There's no upload queue, no server processing time, and no risk of your images being stored on third-party servers.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">Upload one MOV file or process hundreds in a single batch. Choose from all major output formats including JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and ICO. Adjust quality settings, preview results, and download your converted files instantly — all for free.</p>
       </div>
     </section>
   );

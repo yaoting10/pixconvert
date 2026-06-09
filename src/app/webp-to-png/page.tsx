@@ -79,8 +79,10 @@ export default function ConverterPage() {
         description="Upload your WebP files and convert them to PNG format right in your browser — no server uploads ever."
       />
       <InfoSection />
+      <DetailedContent />
       <WhyLocalSection heading="Why Convert WEBP to PNG Locally?" />
       <FAQSection faqs={converterFaqs} title="WebP to PNG FAQ" />
+      <RelatedConversions />
       <FooterCTASection />
     </>
   );
@@ -105,6 +107,35 @@ function InfoSection() {
           <h3 className="font-semibold text-on-background mb-2">Privacy First</h3>
           <p className="text-sm text-on-surface-variant leading-relaxed">Your WEBP files never leave your device. All conversion happens locally using WebAssembly technology, ensuring complete data privacy and security.</p>
         </div>
+      </div>
+    </section>
+  );
+}
+function RelatedConversions() {
+  return (
+    <section className="py-12 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h3 className="font-[family-name:var(--font-space-grotesk)] text-xl font-semibold text-on-background mb-6 text-center">
+        Related WEBP Conversions
+      </h3>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href="/webp-to-jpg" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to JPG</a>
+        <a href="/webp-to-avif" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">WebP to AVIF</a>
+        <a href="/png-to-webp" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">PNG to WebP</a>
+        <a href="/jpg-to-png" className="px-4 py-2 rounded-full text-sm font-medium bg-surface-container-lowest border border-border text-on-background hover:border-primary hover:text-primary transition-all duration-200">JPG to PNG</a>
+      </div>
+    </section>
+  );
+}
+function DetailedContent() {
+  return (
+    <section className="py-16 px-6 mx-auto max-w-[1120px] border-t border-outline-variant">
+      <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl sm:text-3xl font-semibold text-on-background mb-8 text-center">
+        Understanding WEBP to PNG Conversion
+      </h2>
+      <div className="max-w-3xl mx-auto">
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">WebP is an excellent modern format, but there are still situations where PNG is necessary. Some design tools, older software, and specific workflows require PNG's universal compatibility and lossless quality. Converting WebP to PNG gives you the flexibility to use your images anywhere.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PNG supports full alpha channel transparency and preserves every pixel without compression artifacts. This makes it the go-to format for professional graphics, print design, and situations where image quality cannot be compromised.</p>
+        <p className="text-base text-on-surface-variant leading-relaxed mb-4">PixConvert converts WebP to PNG instantly in your browser. Your files never leave your device thanks to local WebAssembly processing. Upload one file or batch convert hundreds — either way, you'll get high-quality PNG files with no watermarks and no registration required.</p>
       </div>
     </section>
   );
