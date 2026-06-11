@@ -19,7 +19,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Free Image Converter Online — Convert JPG, PNG, WebP | PixConvert",
+  title: "Free Image Converter — Convert JPG, PNG, WebP | PixConvert",
   description:
     "Convert images online for free with PixConvert. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload, no signup — 100% private, fast, and browser-based.",
   keywords: [
