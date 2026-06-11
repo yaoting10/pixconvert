@@ -19,9 +19,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "PixConvert — Local Image Converter | Free & Private",
+  title: "Free Image Converter Online — Convert JPG, PNG, WebP | PixConvert",
   description:
-    "Convert images instantly in your browser. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload needed — 100% private, free, and fast.",
+    "Convert images online for free with PixConvert. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload, no signup — 100% private, fast, and browser-based.",
   keywords: [
     "image converter",
     "jpg to png",
@@ -52,23 +52,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://pixconvert.org",
     siteName: "PixConvert",
-    title: "PixConvert — Local Image Converter | Free & Private",
+    title: "Free Image Converter Online — Convert JPG, PNG, WebP | PixConvert",
     description:
-      "Convert images instantly in your browser. No upload needed — 100% private, free, and fast.",
+      "Convert images online for free with PixConvert. No upload, no signup — 100% private, fast, and browser-based.",
     images: [
       {
         url: "https://pixconvert.org/og-image.png",
         width: 1200,
         height: 630,
-        alt: "PixConvert — Local Image Converter",
+        alt: "PixConvert — Free Online Image Converter",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PixConvert — Local Image Converter | Free & Private",
+    title: "Free Image Converter Online — Convert JPG, PNG, WebP | PixConvert",
     description:
-      "Convert images instantly in your browser. No upload needed — 100% private, free, and fast.",
+      "Convert images online for free with PixConvert. No upload, no signup — 100% private, fast, and browser-based.",
     images: ["https://pixconvert.org/og-image.png"],
   },
   alternates: {

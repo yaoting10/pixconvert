@@ -110,11 +110,10 @@ export function HeroSection() {
       id="tools"
     >
       <h1 className="font-[family-name:var(--font-space-grotesk)] text-4xl sm:text-5xl lg:text-[56px] font-bold text-on-background mb-6 max-w-3xl leading-tight">
-        Convert Images Instantly. No Upload Needed.
+        Free Image Converter — Convert JPG, PNG, WebP & More
       </h1>
       <p className="text-lg text-on-surface-variant mb-10 max-w-2xl leading-relaxed">
-        Lightning-fast, secure image conversion powered by local WebAssembly.
-        Your files never leave your device.
+        PixConvert is a free online image converter that converts JPG, PNG, WebP, AVIF, GIF, BMP, TIFF, and ICO files instantly in your browser. No upload, no signup — your files never leave your device.
       </p>
 
       {/* Settings Bar */}

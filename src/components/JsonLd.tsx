@@ -9,7 +9,7 @@ const websiteSchema = {
   name: "PixConvert",
   url: "https://pixconvert.org",
   description:
-    "Convert images instantly in your browser. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload needed — 100% private, free, and fast.",
+    "Convert images online for free with PixConvert. JPG, PNG, WebP, AVIF, ICO, GIF, BMP, TIFF. No upload, no signup — 100% private, fast, and browser-based.",
   potentialAction: {
     "@type": "SearchAction",
     target: {

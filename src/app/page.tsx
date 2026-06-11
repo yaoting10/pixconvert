@@ -10,14 +10,24 @@ import { FooterCTASection } from "@/components/sections/FooterCTASection";
 
 const homeFaqs: FAQItem[] = [
   {
-    question: "What image formats does PixConvert support?",
+    question: "What is the best free image converter online?",
     answer:
-      "PixConvert supports JPG, PNG, WebP, AVIF, ICO, GIF, BMP, and TIFF. You can convert between any of these formats. We also support batch conversion, so you can process multiple files at once.",
+      "PixConvert is one of the best free image converters online because it runs entirely in your browser. There's no upload, no signup, and no file size limit — just fast, private conversion for JPG, PNG, WebP, AVIF, ICO, GIF, BMP, and TIFF.",
   },
   {
-    question: "How is PixConvert different from other online converters?",
+    question: "How do I convert an image to JPG or PNG?",
     answer:
-      "Unlike most online converters that upload your files to their servers, PixConvert processes everything locally in your browser using WebAssembly. This means your files never leave your device, ensuring complete privacy and security.",
+      "Drag and drop your image into PixConvert, choose JPG or PNG as the output format, and click download. The entire image conversion happens locally in your browser, so your file never leaves your device.",
+  },
+  {
+    question: "What image formats does PixConvert support?",
+    answer:
+      "PixConvert supports JPG, PNG, WebP, AVIF, ICO, GIF, BMP, and TIFF. You can convert between any of these formats, including batch conversion for multiple files at once.",
+  },
+  {
+    question: "Is there an image converter that doesn't upload files?",
+    answer:
+      "Yes. PixConvert uses local WebAssembly processing, so your images are converted directly inside your browser. Your files never touch a server, making it ideal for privacy-sensitive users.",
   },
   {
     question: "Is there a file size limit?",
@@ -45,7 +55,7 @@ const homeFaqs: FAQItem[] = [
       "Yes, completely free. There are no hidden costs, watermarks, premium tiers, or usage limits. We believe image conversion should be accessible to everyone.",
   },
   {
-    question: "How does the batch converter work?",
+    question: "How does the batch image converter work?",
     answer:
       "Simply drag and drop multiple files (or an entire folder) into the converter. You can convert all files to the same format or set different output formats for individual files. When done, download everything as a single ZIP archive.",
   },
