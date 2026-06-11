@@ -32,6 +32,10 @@ const videoConverters = [
   { label: "FLV Converter", href: "/flv-converter" },
 ];
 
+const audioConverters = [
+  { label: "Audio Converter", href: "/audio-converter" },
+];
+
 const tools = [
   { label: "Batch Image Converter", href: "/batch-image-converter" },
   { label: "Batch Video Converter", href: "/batch-video-converter" },
@@ -47,12 +51,12 @@ const resources = [
 export function Footer() {
   return (
     <footer className="bg-surface-container-low border-t border-outline-variant mt-auto w-full py-12">
-      <div className="mx-auto max-w-[1120px] px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
+      <div className="mx-auto max-w-[1120px] px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-8">
         {/* Brand */}
         <div className="sm:col-span-2 lg:col-span-2">
           <LogoFull className="mb-3" />
           <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
-            Free online image & video converter. All processing happens locally in your browser — your files never leave your device.
+            Free online image, video & audio converter. All processing happens locally in your browser — your files never leave your device.
           </p>
         </div>
 
@@ -101,6 +105,25 @@ export function Footer() {
           </h4>
           <ul className="space-y-2">
             {videoConverters.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Audio Converters */}
+        <div>
+          <h4 className="font-[family-name:var(--font-space-grotesk)] text-sm font-semibold text-on-background mb-3">
+            Audio Converters
+          </h4>
+          <ul className="space-y-2">
+            {audioConverters.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
