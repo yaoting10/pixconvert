@@ -81,7 +81,7 @@ export default function ConverterPage() {
       <DetailedContent />
       <FAQSection faqs={converterFaqs} title="FLV Converter FAQ" />
       <RelatedConversions />
-      <FooterCTASection />
+      <FooterCTASection ctaText="Convert Your First Video — It's Free" />
     </>
   );
 }

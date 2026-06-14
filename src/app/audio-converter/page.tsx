@@ -85,7 +85,7 @@ export default function AudioConverterPage() {
       <DetailedContent />
       <FAQSection faqs={converterFaqs} title="Audio Converter FAQ" />
       <RelatedConversions />
-      <FooterCTASection />
+      <FooterCTASection ctaText="Convert Your First Audio — It's Free" />
     </>
   );
 }

@@ -76,7 +76,7 @@ export default function BatchVideoConverterPage() {
       <BatchFeatures />
       <FAQSection faqs={batchFaqs} title="Batch Video Conversion FAQ" />
       <RelatedConversions />
-      <FooterCTASection />
+      <FooterCTASection ctaText="Convert Your First Video — It's Free" />
     </>
   );
 }
