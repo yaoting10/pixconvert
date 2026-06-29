@@ -2,7 +2,7 @@ export const dynamic = "force-static";
 
 export default function sitemap() {
   const baseUrl = "https://pixconvert.org";
-  const lastModified = new Date("2026-06-03T08:30:00.000Z");
+  const lastModified = new Date("2026-06-29T04:28:07.000Z");
 
   const pages = [
     { path: "", priority: 1.0, freq: "weekly" as const },
@@ -99,6 +99,20 @@ export default function sitemap() {
     { path: "/webp-vs-png", priority: 0.7, freq: "monthly" as const },
     { path: "/what-is-webp", priority: 0.7, freq: "monthly" as const },
     { path: "/wmv-converter", priority: 0.85, freq: "weekly" as const },
+    { path: "/audio-converter", priority: 0.85, freq: "weekly" as const },
+    // PDF Tools
+    { path: "/pdf-tools", priority: 0.9, freq: "weekly" as const },
+    { path: "/images-to-pdf", priority: 0.9, freq: "weekly" as const },
+    { path: "/merge-pdf", priority: 0.9, freq: "weekly" as const },
+    { path: "/split-pdf", priority: 0.9, freq: "weekly" as const },
+    // { path: "/compress-pdf", priority: 0.9, freq: "weekly" as const },
+    // { path: "/pdf-to-images", priority: 0.9, freq: "weekly" as const },
+    { path: "/protect-pdf", priority: 0.85, freq: "weekly" as const },
+    { path: "/rotate-pdf", priority: 0.85, freq: "weekly" as const },
+    { path: "/unlock-pdf", priority: 0.85, freq: "weekly" as const },
+    { path: "/pdf-page-numbers", priority: 0.85, freq: "weekly" as const },
+    { path: "/pdf-add-text", priority: 0.85, freq: "weekly" as const },
+    { path: "/crop-pdf", priority: 0.85, freq: "weekly" as const },
   ];
 
   return pages.map((page) => ({

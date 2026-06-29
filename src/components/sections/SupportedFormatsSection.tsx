@@ -1,4 +1,14 @@
-const formats = ["JPG", "JPEG", "PNG", "WebP", "AVIF", "BMP", "GIF", "TIFF", "ICO"];
+const formats = [
+  { name: "JPG Converter", href: "/jpg-converter" },
+  { name: "JPEG Converter", href: "/jpeg-converter" },
+  { name: "PNG Converter", href: "/png-converter" },
+  { name: "WebP Converter", href: "/webp-converter" },
+  { name: "AVIF Converter", href: "/avif-converter" },
+  { name: "BMP Converter", href: "/bmp-converter" },
+  { name: "GIF Converter", href: "/gif-converter" },
+  { name: "TIFF Converter", href: "/tiff-converter" },
+  { name: "ICO Converter", href: "/ico-converter" },
+];
 
 export function SupportedFormatsSection() {
   return (
@@ -8,14 +18,15 @@ export function SupportedFormatsSection() {
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
         {formats.map((fmt) => (
-          <div
-            key={fmt}
-            className="bg-surface-container-lowest border border-border rounded-lg p-6 flex flex-col items-center shadow-sm hover:border-primary transition-colors duration-200"
+          <a
+            key={fmt.name}
+            href={fmt.href}
+            className="bg-surface-container-lowest border border-border rounded-lg p-6 flex flex-col items-center shadow-sm hover:border-primary hover:text-primary transition-colors duration-200 cursor-pointer"
           >
-            <span className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold text-primary">
-              {fmt}
+            <span className="font-[family-name:var(--font-space-grotesk)] text-xl font-bold">
+              {fmt.name}
             </span>
-          </div>
+          </a>
         ))}
       </div>
     </section>

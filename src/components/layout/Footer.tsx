@@ -36,6 +36,21 @@ const audioConverters = [
   { label: "Audio Converter", href: "/audio-converter" },
 ];
 
+const pdfTools = [
+  { label: "Images to PDF", href: "/images-to-pdf" },
+  // { label: "PDF to Images", href: "/pdf-to-images" },
+  { label: "Merge PDF", href: "/merge-pdf" },
+  // { label: "Compress PDF", href: "/compress-pdf" },
+  { label: "Split PDF", href: "/split-pdf" },
+  { label: "Protect PDF", href: "/protect-pdf" },
+  { label: "Unlock PDF", href: "/unlock-pdf" },
+  { label: "Rotate PDF", href: "/rotate-pdf" },
+  { label: "Page Numbers", href: "/pdf-page-numbers" },
+  // { label: "Watermark", href: "/pdf-watermark" },
+  { label: "Add Text", href: "/pdf-add-text" },
+  { label: "Crop PDF", href: "/crop-pdf" },
+];
+
 const tools = [
   { label: "Batch Image Converter", href: "/batch-image-converter" },
   { label: "Batch Video Converter", href: "/batch-video-converter" },

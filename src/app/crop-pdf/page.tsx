@@ -1,0 +1,205 @@
+"use client";
+
+import { useState } from "react";
+import { FileUp, X, Download, FileText, Crop } from "lucide-react";
+import { PDFDocument } from "pdf-lib";
+
+export default function CropPDFPage() {
+  const [pdfFile, setPdfFile] = useState<File | null>(null);
+  const [topMargin, setTopMargin] = useState(0);
+  const [bottomMargin, setBottomMargin] = useState(0);
+  const [leftMargin, setLeftMargin] = useState(0);
+  const [rightMargin, setRightMargin] = useState(0);
+  const [cropping, setCropping] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const handleFile = async (files: FileList | null) => {
+    if (!files || files.length === 0) return;
+    const file = files[0];
+    if (file.type !== "application/pdf") {
+      alert("Please select a PDF file.");
+      return;
+    }
+    setPdfFile(file);
+  };
+
+  const clearFile = () => {
+    setPdfFile(null);
+    setTopMargin(0);
+    setBottomMargin(0);
+    setLeftMargin(0);
+    setRightMargin(0);
+    setProgress(0);
+  };
+
+  const cropPDF = async () => {
+    if (!pdfFile) return;
+    setCropping(true);
+    setProgress(0);
+
+    try {
+      const bytes = await pdfFile.arrayBuffer();
+      const pdf = await PDFDocument.load(bytes);
+      
+      const pages = pdf.getPages();
+      
+      for (let i = 0; i < pages.length; i++) {
+        const page = pages[i];
+        const { width, height } = page.getSize();
+        
+        // Apply crop box by adjusting media box
+        const newWidth = width - leftMargin - rightMargin;
+        const newHeight = height - topMargin - bottomMargin;
+        
+        if (newWidth > 0 && newHeight > 0) {
+          page.setMediaBox(leftMargin, bottomMargin, newWidth, newHeight);
+        }
+        
+        setProgress(Math.round(((i + 1) / pages.length) * 100));
+      }
+      
+      const pdfBytes = await pdf.save();
+      
+      const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `cropped-${Date.now()}.pdf`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("PDF crop failed:", err);
+      alert("PDF crop failed. Please check your margins and try again.");
+    } finally {
+      setCropping(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen">
+      {/* Hero */}
+      <section className="pt-20 pb-12 px-6 text-center max-w-[1120px] mx-auto">
+        <h1 className="font-[family-name:var(--font-space-grotesk)] text-3xl sm:text-4xl font-bold text-on-background mb-4">
+          Crop PDF
+        </h1>
+        <p className="text-base sm:text-lg text-on-surface-variant max-w-2xl mx-auto">
+          Remove margins from your PDF pages. Adjust top, bottom, left, and right crop values.
+        </p>
+      </section>
+
+      {/* Upload Area */}
+      <section className="px-6 max-w-[1120px] mx-auto">
+        {!pdfFile ? (
+          <div
+            className="border-2 border-dashed border-border rounded-xl p-12 text-center hover:border-primary transition-colors cursor-pointer bg-surface-container-lowest"
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary", "bg-primary/5"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary", "bg-primary/5"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary", "bg-primary/5"); handleFile(e.dataTransfer.files); }}
+            onClick={() => document.getElementById("pdf-input")?.click()}
+          >
+            <FileText className="h-12 w-12 text-error mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-on-background mb-2">Drag & drop a PDF file here</h3>
+            <p className="text-sm text-on-surface-variant mb-4">Select a PDF to crop pages</p>
+            <input
+              id="pdf-input"
+              type="file"
+              accept=".pdf"
+              className="hidden"
+              onChange={(e) => handleFile(e.target.files)}
+            />
+            <button className="px-6 py-2.5 bg-primary text-on-primary rounded-full text-sm font-medium hover:bg-primary/90 transition-colors">
+              Choose PDF
+            </button>
+          </div>
+        ) : (
+          <div className="bg-surface-container-lowest border border-border rounded-xl p-6">
+            <div className="flex items-center gap-4 mb-6">
+              <FileText className="h-10 w-10 text-error" />
+              <div className="flex-1">
+                <h3 className="font-semibold text-on-background">{pdfFile.name}</h3>
+                <p className="text-sm text-on-surface-variant">{(pdfFile.size / 1024 / 1024).toFixed(2)} MB</p>
+              </div>
+              <button onClick={clearFile} className="text-on-surface-variant hover:text-error">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Crop Settings */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">Top Margin (pts)</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={topMargin}
+                  onChange={(e) => setTopMargin(parseInt(e.target.value) || 0)}
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background text-on-background"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">Bottom Margin (pts)</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={bottomMargin}
+                  onChange={(e) => setBottomMargin(parseInt(e.target.value) || 0)}
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background text-on-background"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">Left Margin (pts)</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={leftMargin}
+                  onChange={(e) => setLeftMargin(parseInt(e.target.value) || 0)}
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background text-on-background"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-on-surface-variant mb-2">Right Margin (pts)</label>
+                <input
+                  type="number"
+                  min={0}
+                  value={rightMargin}
+                  onChange={(e) => setRightMargin(parseInt(e.target.value) || 0)}
+                  className="w-full px-3 py-2 border border-border rounded-lg bg-background text-on-background"
+                />
+              </div>
+            </div>
+
+            {/* Crop Button */}
+            <button
+              onClick={cropPDF}
+              disabled={cropping}
+              className="w-full py-3 bg-primary text-on-primary rounded-full font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {cropping ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-on-primary/30 border-t-on-primary rounded-full animate-spin" />
+                  Cropping... {progress}%
+                </>
+              ) : (
+                <>
+                  <Crop className="h-5 w-5" />
+                  Crop PDF
+                </>
+              )}
+            </button>
+          </div>
+        )}
+      </section>
+
+      {/* Info */}
+      <section className="py-16 px-6 max-w-[1120px] mx-auto border-t border-outline-variant mt-12">
+        <h2 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-semibold text-on-background mb-6 text-center">
+          About Crop PDF
+        </h2>
+        <div className="max-w-3xl mx-auto space-y-4 text-on-surface-variant">
+          <p>Remove unwanted margins from your PDF pages. Specify the amount to crop from each side in points (1 inch = 72 points). Perfect for removing white borders or trimming scanned documents.</p>
+          <p>All processing happens locally in your browser. Your PDFs never leave your device, ensuring complete privacy and security.</p>
+        </div>
+      </section>
+    </main>
+  );
+}
