@@ -66,7 +66,7 @@ export default function UnlockPDFPage() {
         if (author) newPdf.setAuthor(author);
         if (subject) newPdf.setSubject(subject);
         if (creator) newPdf.setCreator(creator);
-        if (keywords) newPdf.setKeywords(keywords);
+        if (keywords) newPdf.setKeywords([keywords]);
         if (producer) newPdf.setProducer(producer);
       } catch (metaErr) {
         console.warn("Could not copy metadata:", metaErr);

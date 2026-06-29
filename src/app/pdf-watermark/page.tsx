@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FileUp, X, Download, FileText, Stamp } from "lucide-react";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { PDFDocument, StandardFonts, rgb, degrees } from "pdf-lib";
 
 export default function PDFWatermarkPage() {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -57,7 +57,7 @@ export default function PDFWatermarkPage() {
           font,
           color: rgb(0.5, 0.5, 0.5),
           opacity,
-          rotate: { angle: 45, x, y },
+          rotate: degrees(45),
         });
         
         setProgress(Math.round(((i + 1) / pages.length) * 100));
