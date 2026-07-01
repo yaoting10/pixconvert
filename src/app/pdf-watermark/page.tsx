@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FileUp, X, Download, FileText, Stamp } from "lucide-react";
+import { X, FileText, Stamp } from "lucide-react";
 import { PDFDocument, StandardFonts, rgb, degrees } from "pdf-lib";
 
 export default function PDFWatermarkPage() {
@@ -28,7 +28,9 @@ export default function PDFWatermarkPage() {
   };
 
   const addWatermark = async () => {
-    if (!pdfFile) return;
+    const text = watermarkText.trim();
+    if (!pdfFile || !text) return;
+
     setApplying(true);
     setProgress(0);
 
@@ -43,22 +45,27 @@ export default function PDFWatermarkPage() {
         const page = pages[i];
         const { width, height } = page.getSize();
         
-        const textWidth = font.widthOfTextAtSize(watermarkText, fontSize);
-        const textHeight = fontSize;
-        
-        // Center position
-        const x = (width - textWidth) / 2;
-        const y = (height - textHeight) / 2;
-        
-        page.drawText(watermarkText, {
-          x,
-          y,
-          size: fontSize,
-          font,
-          color: rgb(0.5, 0.5, 0.5),
-          opacity,
-          rotate: degrees(45),
-        });
+        const textWidth = font.widthOfTextAtSize(text, fontSize);
+        const horizontalGap = Math.max(textWidth + fontSize * 4, width / 2);
+        const verticalGap = Math.max(fontSize * 4, height / 4);
+        const startX = -width;
+        const endX = width * 2;
+        const startY = -height / 2;
+        const endY = height * 1.5;
+
+        for (let y = startY; y <= endY; y += verticalGap) {
+          for (let x = startX; x <= endX; x += horizontalGap) {
+            page.drawText(text, {
+              x,
+              y,
+              size: fontSize,
+              font,
+              color: rgb(0.5, 0.5, 0.5),
+              opacity,
+              rotate: degrees(45),
+            });
+          }
+        }
         
         setProgress(Math.round(((i + 1) / pages.length) * 100));
       }
@@ -74,7 +81,8 @@ export default function PDFWatermarkPage() {
       URL.revokeObjectURL(url);
     } catch (err) {
       console.error("PDF watermark failed:", err);
-      alert("Failed to add watermark. Please try again.");
+      const message = err instanceof Error ? err.message : "Please try again.";
+      alert("Failed to add watermark: " + message);
     } finally {
       setApplying(false);
     }
@@ -172,7 +180,7 @@ export default function PDFWatermarkPage() {
             {/* Apply Button */}
             <button
               onClick={addWatermark}
-              disabled={applying || !watermarkText}
+              disabled={applying || !watermarkText.trim()}
               className="w-full py-3 bg-primary text-on-primary rounded-full font-medium hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {applying ? (

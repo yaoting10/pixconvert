@@ -1,7 +1,13 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
-import { FileUp, X, Download, FileText, Image } from "lucide-react";
+import { useState, useCallback } from "react";
+import { X, FileText, Image } from "lucide-react";
+
+type PDFJSLib = typeof import("pdfjs-dist");
+type ConvertedImage = {
+  filename: string;
+  blob: Blob;
+};
 
 export default function PDFToImagesPage() {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -9,43 +15,6 @@ export default function PDFToImagesPage() {
   const [progress, setProgress] = useState(0);
   const [imageFormat, setImageFormat] = useState("png"); // png, jpg, webp
   const [dpi, setDpi] = useState(2); // 1x, 2x, 3x
-  const pdfjsRef = useRef<any>(null);
-
-  // Preload PDF.js on mount
-  useEffect(() => {
-    const loadPdfJs = async () => {
-      if (pdfjsRef.current) return;
-      
-      try {
-        // Try to load from CDN
-        const script = document.createElement("script");
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.js";
-        script.async = true;
-        
-        await new Promise<void>((resolve, reject) => {
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error("Failed to load PDF.js"));
-          document.head.appendChild(script);
-        });
-        
-        // Wait a bit for the script to initialize
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        const lib = (window as any).pdfjsLib;
-        if (lib) {
-          lib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js";
-          pdfjsRef.current = lib;
-          console.log("PDF.js loaded successfully, version:", lib.version);
-        } else {
-          console.error("pdfjsLib not found on window after script load");
-        }
-      } catch (err) {
-        console.error("PDF.js preload failed:", err);
-      }
-    };
-    
-    loadPdfJs();
-  }, []);
 
   const handleFile = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -68,38 +37,14 @@ export default function PDFToImagesPage() {
     setProgress(0);
 
     try {
-      const arrayBuffer = await pdfFile.arrayBuffer();
-      
-      // Ensure PDF.js is loaded
-      let pdfjsLib = pdfjsRef.current;
-      if (!pdfjsLib) {
-        // Try loading again if not loaded
-        const script = document.createElement("script");
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.js";
-        script.async = true;
-        
-        await new Promise<void>((resolve, reject) => {
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error("Failed to load PDF.js"));
-          document.head.appendChild(script);
-        });
-        
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
-        pdfjsLib = (window as any).pdfjsLib;
-        if (pdfjsLib) {
-          pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.js";
-          pdfjsRef.current = pdfjsLib;
-        }
-      }
-      
-      if (!pdfjsLib) {
-        throw new Error("PDF.js library not available. Please refresh the page and try again.");
-      }
+      const pdfjsLib: PDFJSLib = await import("pdfjs-dist");
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
+      const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       const numPages = pdf.numPages;
-      const images: string[] = [];
+      const images: ConvertedImage[] = [];
+      const extension = imageFormat === "jpg" ? "jpg" : imageFormat === "webp" ? "webp" : "png";
 
       for (let i = 1; i <= numPages; i++) {
         const page = await pdf.getPage(i);
@@ -117,25 +62,48 @@ export default function PDFToImagesPage() {
         }).promise;
 
         const mimeType = imageFormat === "jpg" ? "image/jpeg" : imageFormat === "webp" ? "image/webp" : "image/png";
-        const dataUrl = canvas.toDataURL(mimeType, 0.9);
-        images.push(dataUrl);
+        const blob = await new Promise<Blob>((resolve, reject) => {
+          canvas.toBlob((result) => {
+            if (result) {
+              resolve(result);
+            } else {
+              reject(new Error(`Failed to render page ${i}`));
+            }
+          }, mimeType, 0.9);
+        });
+
+        images.push({
+          filename: `page-${i}.${extension}`,
+          blob,
+        });
 
         setProgress(Math.round((i / numPages) * 100));
       }
 
-      // Download images
+      // Download a single image directly. For multiple pages, use one ZIP so
+      // browsers do not block repeated automatic downloads.
       if (images.length === 1) {
+        const url = URL.createObjectURL(images[0].blob);
         const a = document.createElement("a");
-        a.href = images[0];
-        a.download = `page-1.${imageFormat}`;
+        a.href = url;
+        a.download = images[0].filename;
         a.click();
+        URL.revokeObjectURL(url);
       } else {
-        images.forEach((img, idx) => {
-          const a = document.createElement("a");
-          a.href = img;
-          a.download = `page-${idx + 1}.${imageFormat}`;
-          a.click();
+        const { default: JSZip } = await import("jszip");
+        const zip = new JSZip();
+
+        images.forEach((image) => {
+          zip.file(image.filename, image.blob);
         });
+
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+        const url = URL.createObjectURL(zipBlob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `pdf-pages-${Date.now()}.zip`;
+        a.click();
+        URL.revokeObjectURL(url);
       }
     } catch (err: any) {
       console.error("PDF to images conversion failed:", err);

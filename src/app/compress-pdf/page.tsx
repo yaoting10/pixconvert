@@ -1,28 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { FileUp, X, Download, FileText, Minimize, Image } from "lucide-react";
+import { useState } from "react";
+import { X, Download, FileText, Minimize } from "lucide-react";
 import { PDFDocument } from "pdf-lib";
 
-// pdf.js types
-interface PDFJSPage {
-  getViewport: (options: { scale: number }) => { width: number; height: number };
-  render: (options: { canvasContext: CanvasRenderingContext2D; viewport: { width: number; height: number } }) => { promise: Promise<void> };
-}
-
-interface PDFJSDocument {
-  numPages: number;
-  getPage: (pageNum: number) => Promise<PDFJSPage>;
-}
-
-declare global {
-  interface Window {
-    pdfjsLib?: {
-      getDocument: (data: { data: Uint8Array }) => { promise: Promise<PDFJSDocument> };
-      GlobalWorkerOptions?: { workerSrc: string };
-    };
-  }
-}
+type PDFJSLib = typeof import("pdfjs-dist");
 
 export default function CompressPDFPage() {
   const [pdfFile, setPdfFile] = useState<File | null>(null);
@@ -30,7 +12,6 @@ export default function CompressPDFPage() {
   const [progress, setProgress] = useState(0);
   const [quality, setQuality] = useState("medium"); // low, medium, high
   const [result, setResult] = useState<{ originalSize: number; compressedSize: number; quality: string } | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const handleFile = async (files: FileList | null) => {
     if (!files || files.length === 0) return;
@@ -49,57 +30,19 @@ export default function CompressPDFPage() {
     setResult(null);
   };
 
-  // pdf.js worker (loaded as a separate script)
-  const PDFJS_WORKER_SRC = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
-  
-  // Load pdf.js dynamically
-  const loadPDFJS = async (): Promise<boolean> => {
-    if (typeof window === 'undefined') return false;
-    if (window.pdfjsLib) return true;
-    
-    return new Promise((resolve) => {
-      const script = document.createElement('script');
-      // Use UMD version (not ES module) so it attaches to window
-      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.js';
-      script.onload = () => {
-        setTimeout(() => {
-          resolve(!!window.pdfjsLib);
-        }, 200);
-      };
-      script.onerror = () => resolve(false);
-      document.head.appendChild(script);
-    });
-  };
   // Compress PDF by rendering each page to image and re-creating PDF
   const compressPDFByRendering = async (file: File, qualityLevel: string) => {
     const imageQuality = qualityLevel === "low" ? 0.3 : qualityLevel === "medium" ? 0.6 : 0.85;
     const maxDimension = qualityLevel === "low" ? 1200 : qualityLevel === "medium" ? 1800 : 2400;
     const dpi = qualityLevel === "low" ? 72 : qualityLevel === "medium" ? 150 : 200;
     
-    // Load pdf.js
-    const pdfjsLoaded = await loadPDFJS();
-    if (!pdfjsLoaded || !window.pdfjsLib) {
-      throw new Error("PDF.js library could not be loaded");
-    }
-    
-    const pdfjsLib = window.pdfjsLib;
-    
-    // Load PDF with pdf.js - pass worker source directly in options
+    const pdfjsLib: PDFJSLib = await import("pdfjs-dist");
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+
     const bytes = await file.arrayBuffer();
     const uint8Array = new Uint8Array(bytes);
-    
-    // Use getDocument with workerSrc option (if supported by this version)
-    // @ts-ignore - pdf.js API may vary
-    const docOptions: any = { data: uint8Array };
-    
-    // Try to set worker source via getDocument options
-    // @ts-ignore
-    if (pdfjsLib.GlobalWorkerOptions) {
-      // @ts-ignore
-      pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER_SRC;
-    }
-    
-    const pdfDoc = await pdfjsLib.getDocument(docOptions).promise;
+
+    const pdfDoc = await pdfjsLib.getDocument({ data: uint8Array }).promise;
     
     // Create new PDF with pdf-lib
     const newPdf = await PDFDocument.create();
