@@ -38,15 +38,15 @@ const audioConverters = [
 
 const pdfTools = [
   { label: "Images to PDF", href: "/images-to-pdf" },
-  // { label: "PDF to Images", href: "/pdf-to-images" },
+  { label: "PDF to Images", href: "/pdf-to-images" },
   { label: "Merge PDF", href: "/merge-pdf" },
-  // { label: "Compress PDF", href: "/compress-pdf" },
+  { label: "Compress PDF", href: "/compress-pdf" },
   { label: "Split PDF", href: "/split-pdf" },
   { label: "Protect PDF", href: "/protect-pdf" },
   { label: "Unlock PDF", href: "/unlock-pdf" },
   { label: "Rotate PDF", href: "/rotate-pdf" },
   { label: "Page Numbers", href: "/pdf-page-numbers" },
-  // { label: "Watermark", href: "/pdf-watermark" },
+  { label: "Watermark", href: "/pdf-watermark" },
   { label: "Add Text", href: "/pdf-add-text" },
   { label: "Crop PDF", href: "/crop-pdf" },
 ];
